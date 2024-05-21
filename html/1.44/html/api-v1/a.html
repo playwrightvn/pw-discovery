@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie test</title>
+</head>
+
+<body>
+  <h1>Test cookie - by https://playwrightvn.com</h1>
+
+  <script type="text/javascript">
+    var cookieName = 'Cookie 01';
+    var cookieValue = 'HelloWorld';
+    var myDate = new Date();
+    myDate.setMonth(myDate.getMonth() + 12);
+    document.cookie = cookieName + "=" + cookieValue + ";expires=" + myDate
+      + ";domain=127.0.0.1;path=api-v1";
+
+
+    var cookieName = 'Cookie 02';
+    var cookieValue = 'HelloWorld';
+    var myDate = new Date();
+    myDate.setMonth(myDate.getMonth() + 12);
+    document.cookie = cookieName + "=" + cookieValue + ";expires=" + myDate
+      + ";domain=127.0.0.1;path=api-v1";
+
+  </script>
+</body>
+
+</html>
