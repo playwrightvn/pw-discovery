@@ -1,4 +1,5 @@
 import { Page } from '@playwright/test'
+import { DashboardPage } from './dashboard-page';
 
 export class LoginPage {
     page: Page
@@ -8,6 +9,7 @@ export class LoginPage {
     }
 
     async login(username: string, password: string) {
-        
+        return new DashboardPage(this.page);
     }
+
 }
