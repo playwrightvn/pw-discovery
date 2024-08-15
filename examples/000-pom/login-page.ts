@@ -8,8 +8,19 @@ export class LoginPage {
         this.page = page;
     }
 
-    async login(username: string, password: string) {
+    async login1(username: string, password: string) {
+        // fill thong tin
+        // click button login
+        
         return new DashboardPage(this.page);
+    }
+
+    async login(){
+        console.log('Do login');
+    }
+
+    async cleanUp() {
+        console.log('Do clean up');
     }
 
 }

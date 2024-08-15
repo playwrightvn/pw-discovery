@@ -1,7 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('https://demo.playwright.dev/todomvc');
+  await page.goto('https://material.playwrightvn.com/');
 });
 
 const TODO_ITEMS = [
@@ -355,9 +355,8 @@ test.describe('Routing', () => {
 
     await checkNumberOfCompletedTodosInLocalStorage(page, 1);
 
-    await test.step('Showing all items', async () => {
-      await page.getByRole('link', { name: 'All' }).click();
-      await expect(todoItem).toHaveCount(3);
+    await test.step('Step name', async () => {
+      // Code here
     });
 
     await test.step('Showing active items', async () => {

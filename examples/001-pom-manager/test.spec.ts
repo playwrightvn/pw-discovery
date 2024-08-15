@@ -7,13 +7,13 @@ test('POM manager example', async ({ page }) => {
     const loginPage = manager.getLoginPage();
     const dashboardPage = manager.getDashboardPage();
 
-    await loginPage.login("phong", "tmp_pass");
+    await loginPage.login1("phong", "tmp_pass");
     await dashboardPage.navigateToMenu("Post")
 });
 
 test('Return other POM example', async ({ page }) => {
     const loginPage = new LoginPage(page);
-    const dashboardPage = await loginPage.login("phong", "tmp_pass");
-    
+    const dashboardPage = await loginPage.login1("phong", "tmp_pass");
+
     await dashboardPage.navigateToMenu("Post")
 });
