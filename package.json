@@ -1,17 +1,17 @@
 {
-  "name": "pw-update",
+  "name": "pw-discovery",
   "version": "1.0.0",
-  "description": "",
+  "description": "Chào mừng bạn đến với vọc vạch Playwright! Trong repo này, chúng ta sẽ cùng nhau:\r - Khám phá Playwright - một thư viện mạnh mẽ giúp tự động hóa các tác vụ trên các trình duyệt hiện đại thông qua các ví dụ.\r - Thực hiện daily coding, luyện tập hàng ngày.",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "playwright test  --headed",
+    "ui": "playwright test --ui"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.44.0",
-    "@types/node": "^20.12.12"
-  },
-  "dependencies": {
-    "dotenv": "^16.4.5"
+    "@playwright/test": "^1.42.1",
+    "@types/node": "^20.12.2"
   }
 }

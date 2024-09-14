@@ -4,3 +4,7 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 .env
+package-lock.json
+node_modules
+package.json
+playwright.config.ts
