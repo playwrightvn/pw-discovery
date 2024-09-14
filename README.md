@@ -1,34 +1,30 @@
 # 🎭 Vọc vạch Playwright
-
-Chào mừng bạn đến với kho lưu trữ GitHub của chúng tôi! Trong dự án này, chúng tôi sẽ cùng nhau khám phá Playwright - một thư viện mạnh mẽ giúp tự động hóa các tác vụ trên các trình duyệt hiện đại. 📚
+Chào mừng bạn đến với vọc vạch Playwright! Trong repo này, chúng ta sẽ cùng nhau:
+- Khám phá Playwright - một thư viện mạnh mẽ giúp tự động hóa các tác vụ trên các trình duyệt hiện đại thông qua các ví dụ.
+- Thực hiện daily coding, luyện tập hàng ngày.
 
 # 🛠️ Cài Đặt
-
-Để bắt đầu với dự án này, bạn cần cài đặt Node.js và npm. Sau đó, bạn có thể cài đặt Playwright bằng lệnh sau:
-
+- Pull code về.
+- Chạy lệnh cài đặt Playwright browser và các package liên quan.
 ```bash
 npm install playwright
+npm install
 ```
-# 📖 Nội Dung
-Đọc tài liệu: Hướng dẫn chi tiết về cách sử dụng Playwright và các tính năng của nó.
-Phiên bản mới: Cập nhật và khám phá các tính năng mới trong các phiên bản Playwright mới nhất.
-# 📁 Cấu Trúc Thư Mục
 
-```bash
-docs/: Tài liệu chi tiết và hướng dẫn sử dụng Playwright.
-examples/: Các ví dụ mẫu minh họa cách sử dụng Playwright.
-tests/: Bộ test tự động để kiểm tra các tính năng của Playwright.
-```
-# 🚀 Bắt Đầu
-Để bắt đầu với dự án, bạn có thể chạy lệnh sau để kiểm tra phiên bản của Playwright và xem các ví dụ mẫu:
+# Daily coding
+Để thực hiện challenges daily coding, bạn follow theo các bước sau:
+1. Join cộng đồng [Playwright Việt Nam trên Facebook](https://www.facebook.com/playwrightvietnam/), nhận challenge ngày mới vào 7AM hàng ngày.
+2. Fork repo pw-discovery về, thực hiện giải các bài toán của ngày tương ứng. Cấu trúc folder sẽ là: `daily_challenges/<tháng>/<ngày>`.
+    - Tên file sẽ theo format: `${username_github}.spec.ts`. Ví dụ, username của bạn là `minhphong306`, hãy tạo file `minhphong306.spec.ts` vào trong folder chứa bài toán.
+3. Tạo pull request và gửi lại vào post để được hỗ trợ review.
 
-```bash
-npx playwright --version
-node examples/sample-test.js
-```
+Xem thêm hướng dẫn bằng video ở đây: [Link Youtube]()
+
 # 🧑‍💻 Đóng Góp
-Chúng tôi luôn chào đón các đóng góp từ cộng đồng! Hãy tạo một fork của dự án, thực hiện thay đổi và gửi pull request cho chúng tôi.
-
+- Chúng tôi luôn chào đón các đóng góp từ cộng đồng! Hãy tạo một fork của dự án, thực hiện thay đổi và gửi pull request cho chúng tôi.
+- Đóng góp của bạn có thể là đề bài, là review code cho người khác.
 # 📬 Liên Hệ
-Nếu bạn có bất kỳ câu hỏi hoặc góp ý nào, hãy liên hệ với chúng tôi qua email: playwrightvietnam@gmail.com
----
+Nếu bạn có bất kỳ câu hỏi hoặc góp ý nào, hãy liên hệ với chúng tôi qua các kênh:
+- Email: playwrightvietnam@gmail.com
+- Cộng đồng Playwright Việt Nam trên Facebook: https://www.facebook.com/playwrightvietnam/
+
