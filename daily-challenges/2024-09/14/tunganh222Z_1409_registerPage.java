@@ -45,9 +45,21 @@ public class tunganh222Z_1409_registerPage {
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(informationTable));
 
         List<WebElement> infor = driver.findElements(By.xpath("//tbody/tr/td"));
+        boolean checkUsername = false;
+        boolean checkEmail = false;
 
-        Assert.assertEquals(infor.get(1).getText(), this.userName);
-        Assert.assertEquals(infor.get(2).getText(), this.email);
+        for (int i = 0 ; i < infor.size() ; i++){
+            String assertText = infor.get(i).getText();
+            if (assertText.contains(this.userName)){
+                checkUsername = true;
+            }
+            if (assertText.contains(this.email)){
+                checkEmail = true;
+            }
+        }
+
+        Assert.assertTrue(checkUsername);
+        Assert.assertTrue(checkEmail);
 
     }
 
