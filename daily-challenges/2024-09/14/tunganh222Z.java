@@ -57,12 +57,13 @@ public class tunganh222Z {
         double height = sc.nextDouble();
         System.out.println("Vui lòng nhập số cân nặng kg của bạn");
         double weight = sc.nextDouble();
-        System.out.println("Phân loại :" + caculateBMI(valueBMI(weight, height)));
-        System.out.println("Kết quả BMI: " + valueBMI(weight, height));
+        double bmi = valueBMI(weight, height);
+        System.out.println("Phân loại :" + caculateBMI(bmi));
+        System.out.println("Kết quả BMI: " + bmi);
     }
 
-    public double valueBMI(double inputWeight, double inputHeight) {
-        return inputWeight / (inputHeight * inputHeight);
+    public double valueBMI(double weight, double height) {
+        return weight / (height * height);
     }
 
     public String caculateBMI(double BMI) {
