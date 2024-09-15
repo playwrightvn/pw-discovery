@@ -7,15 +7,15 @@ function calculateBMI(weight: number, height: number) {
     console.log(`Kết quả BMI: ${BMI}`);
 
     if (BMI < 18.5) {
-        console.log('Phân loại: "Gầy"');
+        console.log("Gầy");
     }
     else if (BMI >= 18.5 && BMI < 24.9) {
-        console.log('Phân loại: "Bình thường"');
+        console.log("Bình thường");
     }
     else if (BMI >= 25 && BMI < 29.9) {
-        console.log('Phân loại: "Thừa cân"');
+        console.log("Thừa cân");
     }
-    else if (BMI > 30) {
+    else {
         console.log("Béo phì");
     }
 }
@@ -41,8 +41,9 @@ test('Day 14', async ({ page }) => {
 
     await page.locator('[type="submit"]').click();
 
-    expect(await page.locator('//*[@id="userTable"]//tbody/tr[1]/td[2]').textContent()).toEqual(username);
-    expect(await page.locator('//*[@id="userTable"]//tbody/tr[1]/td[3]').textContent()).toEqual(email);
+    await expect( page.locator('//*[@id="userTable"]//tbody/tr[1]/td[2]')).toHaveText(username);
+    await expect( page.locator('//*[@id="userTable"]//tbody/tr[1]/td[3]')).toHaveText(email);
+    
     // DEBUG PURPOSE ONLY
     await page.waitForTimeout(3 * 1000);
 })
