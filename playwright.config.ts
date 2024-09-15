@@ -2,7 +2,7 @@ const {defineConfig,devices}= require('@playwright/test')
 
 module.exports= defineConfig({
     //test Directory
-    testDir: './tests',
+    testDir: 'daily-challenges',
     projects: [
         {
             name: 'chromium',

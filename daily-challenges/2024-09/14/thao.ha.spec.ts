@@ -1,4 +1,3 @@
-// TypeScript
 function calculateBMI(weight: number, height: number) {
     let BMI = 0;
     if (weight <= 0 && height <= 0) {
@@ -24,8 +23,9 @@ function calculateBMI(weight: number, height: number) {
 let weight=53, height=1.5;
 calculateBMI(weight,height);
 
+//Playwright
 import {test} from '@playwright/test';
-test('Test Cheap ComputerComponent', async ({page}) => {
+test('Day 14', async ({page}) => {
     await page.goto('https://material.playwrightvn.com/');
     await page.locator('[href|="01"]').click();
     const textName=await page.locator('#username');
