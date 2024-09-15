@@ -7,16 +7,16 @@ function calculateBMI(weight: number, height: number) {
     console.log(`Kết quả BMI: ${BMI}`);
 
     if (BMI < 18.5) {
-        console.log("Gầy");
+        console.log('Phân loại: "Gầy"');
     }
     else if (BMI >= 18.5 && BMI < 24.9) {
-        console.log("Bình thường");
+        console.log('Phân loại: "Bình thường"');
     }
     else if (BMI >= 25 && BMI < 29.9) {
-        console.log("Thừa cân");
+        console.log('Phân loại: "Thừa cân"');
     }
     else {
-        console.log("Béo phì");
+        console.log('Phân loại: "Béo phì"');
     }
 }
 let weight = 53, height = 1.5;
