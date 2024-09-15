@@ -23,17 +23,26 @@ let weight = 53, height = 1.5;
 calculateBMI(weight, height);
 
 //Playwright
-import { test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 test('Day 14', async ({ page }) => {
     await page.goto('https://material.playwrightvn.com/');
+
     await page.locator('[href|="01"]').click();
+
+    let username= 'ThaoHa';
     const textName = await page.locator('#username');
     await textName.clear();
-    await textName.fill('ThaoHa');
-    const email = await page.locator('#email');
-    await email.clear();
-    await email.fill('lily@gmail.com');
+    await textName.fill(username);
+
+    let email='lily@gmail.com'
+    const txtemail = await page.locator('#email');
+    await txtemail.clear();
+    await txtemail.fill(email);
+
     await page.locator('[type="submit"]').click();
+
+    expect(await page.locator('//*[@id="userTable"]//tbody/tr[1]/td[2]').textContent()).toEqual(username);
+    expect(await page.locator('//*[@id="userTable"]//tbody/tr[1]/td[3]').textContent()).toEqual(email);
     // DEBUG PURPOSE ONLY
     await page.waitForTimeout(3 * 1000);
 })
