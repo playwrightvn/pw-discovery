@@ -19,9 +19,15 @@ import java.util.Random;
 public class tunganh222Z {
     WebDriver driver;
     WebDriverWait explicitWait;
-    // userName and email
+
+    // data Test
     String userName = "TungAnh";
     String email = getEmailRand();
+    String expectedInterest = "Art";
+    String expectedCountry = "Canada";
+    String bio = "Tung anh \n tunganh222Z \n dailycoding";
+    String hex = "#5b8584";
+
     @BeforeClass
     public void beforeClass(){
         driver = new FirefoxDriver();
@@ -47,6 +53,7 @@ public class tunganh222Z {
 
     @Test
     public void TC_02_registerPage(){
+
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
         driver.get("https://material.playwrightvn.com/");
@@ -79,12 +86,10 @@ public class tunganh222Z {
         String hobbiesSelected = String.join(", ", hobbiesSet);
 
         // default dropdown
-        String expectedInterest = "Art";
         Select interest = new Select(driver.findElement(By.cssSelector("select#interests")));
         interest.selectByVisibleText(expectedInterest);
 
         // default dropdown
-        String expectedCountry = "Canada";
         Select country = new Select(driver.findElement(By.cssSelector("select#country")));
         country.selectByVisibleText(expectedCountry);
         String countrySelected = country.getFirstSelectedOption().getText();
@@ -92,7 +97,7 @@ public class tunganh222Z {
         //upload file
         //driver.findElement(By.xpath("//input[@type='file']")).sendKeys();
         //input text area
-        driver.findElement(By.xpath("//textarea[@id='bio']")).sendKeys("Tung anh \n tunganh222Z \n dailycoding");
+        driver.findElement(By.xpath("//textarea[@id='bio']")).sendKeys(bio);
 
         //dob
         js.executeScript("arguments[0].value='2023-09-15';",
@@ -107,7 +112,6 @@ public class tunganh222Z {
         String rated = driver.findElement(By.cssSelector("input#rating")).getAttribute("value");
 
         //color
-        String hex = "#5b8584";
         driver.findElement(By.xpath("//input[@type='color']"));
         js.executeScript("arguments[0].value='"+hex+"';",
                 driver.findElement(By.xpath("//input[@type='color']")));
