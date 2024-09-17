@@ -11,7 +11,7 @@ Chào mừng bạn đến với vọc vạch Playwright! Trong repo này, chúng
 - Chạy lệnh cài đặt Playwright browser và các package liên quan.
 
 ```bash {"id":"01J7WTWHFJBDST89TWE058YAGS"}
-npx install playwright
+npm install playwright
 npm install
 
 ```
@@ -22,6 +22,7 @@ npm install
 
 1. Join cộng đồng [Playwright Việt Nam trên Facebook](https://www.facebook.com/playwrightvietnam/), nhận challenge ngày mới vào 7AM hàng ngày.
 2. Fork repo pw-discovery về, thực hiện giải các bài toán của ngày tương ứng. Cấu trúc folder sẽ là: `daily_challenges/<tháng>/<ngày>`.
+
    - Tên file sẽ theo format: `${username_github}.spec.ts`. Ví dụ, username của bạn là `minhphong306`, hãy tạo file `minhphong306.spec.ts` vào trong folder chứa bài toán.
 
 3. Tạo pull request và gửi lại vào post để được hỗ trợ review.
