@@ -80,7 +80,6 @@ public class tunganh222Z {
             hobbies.get(i).click();
             if (hobbies.get(i).isSelected()){
                 hobbiesSet[i] = labels.get(i).getText();
-
             }
         }
         String hobbiesSelected = String.join(", ", hobbiesSet);

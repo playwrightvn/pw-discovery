@@ -14,6 +14,23 @@ public class tunganh222Z {
     WebDriver driver;
     WebDriverWait explicitWait;
 
+    //Locator
+    By product1 = By.xpath("//div[text()='Product 1']/following-sibling::button");
+    By product2 = By.xpath("//div[text()='Product 2']/following-sibling::button");
+    By product3 = By.xpath("//div[text()='Product 3']/following-sibling::button");
+
+    By price1 = By.xpath("//div[text()='Product 1']/following-sibling::div[@class='product-price']");
+    By price2 = By.xpath("//div[text()='Product 2']/following-sibling::div[@class='product-price']");
+    By price3 = By.xpath("//div[text()='Product 3']/following-sibling::div[@class='product-price']");
+
+    By product1Table = By.xpath("//td[text()='Product 1']/parent::tr");
+    By product2Table = By.xpath("//td[text()='Product 2']/parent::tr");
+    By product3Table = By.xpath("//td[text()='Product 3']/parent::tr");
+
+    By quantity1 = By.xpath("//td[text()='Product 1']/parent::tr/td[3]");
+    By quantity2 = By.xpath("//td[text()='Product 2']/parent::tr/td[3]");
+    By quantity3 = By.xpath("//td[text()='Product 3']/parent::tr/td[3]");
+
     @BeforeClass
     public void beforeClass(){
         driver = new FirefoxDriver();
@@ -32,51 +49,29 @@ public class tunganh222Z {
 
     @Test
     public void TC_02_productPage(){
-        //
+        //Open
         driver.get("https://material.playwrightvn.com/");
         driver.findElement(By.xpath("//a[contains(text(),'Product page')]")).click();
 
         //dataTest_TC_02
-        WebElement product1 = driver.findElement(
-                By.xpath("//div[text()='Product 1']/following-sibling::button"));
-        WebElement price1 = driver.findElement(
-                By.xpath("//div[text()='Product 1']/following-sibling::div[@class='product-price']"));
         int expectedQuantity1 = 2;
-
-        WebElement product2 = driver.findElement(
-                By.xpath("//div[text()='Product 2']/following-sibling::button"));
-        WebElement price2 = driver.findElement(
-                By.xpath("//div[text()='Product 2']/following-sibling::div[@class='product-price']"));
         int expectedQuantity2 = 2;
-        WebElement product3 = driver.findElement(
-                By.xpath("//div[text()='Product 3']/following-sibling::button"));
-        WebElement price3 = driver.findElement(
-                By.xpath("//div[text()='Product 3']/following-sibling::div[@class='product-price']"));
         int expectedQuantity3 = 3;
 
         //Add to cart product1
-        product1.click();
-        WebElement quantity1 = driver.findElement(
-                By.xpath("//td[text()='Product 1']/parent::tr/td[3]"));
-        By product1Table = By.xpath("//td[text()='Product 1']/parent::tr");
-        addToCart(product1Table, product1, quantity1,expectedQuantity1);
+        webElement(product1).click();
+        addToCart(product1Table, webElement(product1), webElement(quantity1), expectedQuantity1);
 
         //Add to cart product2
-        product2.click();
-        WebElement quantity2 = driver.findElement(
-                By.xpath("//td[text()='Product 2']/parent::tr/td[3]"));
-        By product2Table = By.xpath("//td[text()='Product 2']/parent::tr");
-        addToCart(product2Table, product2, quantity2, expectedQuantity2);
+        webElement(product2).click();
+        addToCart(product2Table, webElement(product2), webElement(quantity2), expectedQuantity2);
 
         //Add to cart product3
-        product3.click();
-        WebElement quantity3 = driver.findElement(
-                By.xpath("//td[text()='Product 3']/parent::tr/td[3]"));
-        By product3Table = By.xpath("//td[text()='Product 3']/parent::tr");
-        addToCart(product3Table, product3, quantity3, expectedQuantity3);
+        webElement(product3).click();
+        addToCart(product3Table, webElement(product3), webElement(quantity3), expectedQuantity3);
 
         //Check total price
-        double totalPriceD = totalPrice(price1,expectedQuantity1) + totalPrice(price2,expectedQuantity2) +totalPrice(price3,expectedQuantity3);
+        double totalPriceD = totalPrices(webElement(price1),expectedQuantity1) + totalPrices(webElement(price2),expectedQuantity2) + totalPrices(webElement(price3),expectedQuantity3);
         System.out.println("Total price is : $"+totalPriceD);
         //convert to Strring
         String totalPriceS = "$"+String.format("%.2f", totalPriceD);
@@ -84,11 +79,16 @@ public class tunganh222Z {
         Assert.assertEquals(driver.findElement(By.xpath("//td[@class='total-price']")).getText(),totalPriceS);
     }
 
-    public double totalPrice(WebElement price, int expectedQuantity){
+    public double totalPrices(WebElement price, int expectedQuantity){
         //
         double priceString = Double.parseDouble(price.getText().replace("$",""));
         double totalPrice = priceString * expectedQuantity;
         return totalPrice;
+    }
+
+    public WebElement webElement(By locator){
+        explicitWait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        return driver.findElement(locator);
     }
 
     public void  addToCart(By productTable, WebElement product, WebElement quantity, int expectedQuantity){
