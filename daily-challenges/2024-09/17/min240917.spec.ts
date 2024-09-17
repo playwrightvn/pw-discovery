@@ -17,15 +17,15 @@ function isPrime(number: number) {
     else if (number == 2) {
         console.log(`"Số này là số nguyên tố"`);
     }
-    else if (number % 2 == 0){
+    else if (number % 2 == 0) {
         console.log(`"Số này không phải là số nguyên tố"`);
     }
     else if (number > 2) {
-        for (let i = 0; i <= number-1; i+=2){
-            if(number%i == 0){
+        for (let i = 0; i <= number - 1; i += 2) {
+            if (number % i == 0) {
                 console.log(`"Số này không phải là số nguyên tố"`);
             }
-            else{
+            else {
                 console.log(`"Số này là số nguyên tố"`);
             }
         }
@@ -81,7 +81,7 @@ test('min240917', async ({ page }) => {
     await expect(Number(actual_qtyP3)).toEqual(testData.qtyP3)
     // Kiểm tra tổng tiền sản phẩm đúng (tổng tiền = tổng (số lượng * đơn giá))
     let totalPrice: number
-    totalPrice = 10.000*2 + 20.000*2 + 30.000*3
+    totalPrice = 10.000 * 2 + 20.000 * 2 + 30.000 * 3
     let format_totalPrice = `$${totalPrice}.00`
     let price = await page.locator(`//td[@class="total-price"]`).innerText()
     await expect(price).toEqual(format_totalPrice)
