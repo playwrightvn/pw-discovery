@@ -44,5 +44,9 @@ test('Register Page Test', async ({ page }) => {
   const cells = page.locator('tbody td');
   await expect(cells.nth(1)).toHaveText(testData.username);
   await expect(cells.nth(2)).toHaveText(testData.email);
-
+  await expect(page.locator("//tbody//td").nth(3)).toContainText(`Gender: female`);
+  await expect(page.locator("//tbody//td").nth(3)).toContainText(`Hobbies: traveling`);
+  await expect(page.locator("//tbody//td").nth(3)).toContainText(`Country: canada`);
+  await expect(page.locator("//tbody//td").nth(3)).toContainText(`Date of Birth: ${testData.dob}`);
+  await expect(page.locator("//tbody//td").nth(3)).toContainText(`Biography: ${testData.bio}`);
 });
