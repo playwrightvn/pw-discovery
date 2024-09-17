@@ -76,7 +76,6 @@ public class tunganh222Z {
         String totalPriceS = "$"+String.format("%.2f", totalPriceD);
         //Assert
         Assert.assertEquals(driver.findElement(By.xpath("//td[@class='total-price']")).getText(),totalPriceS);
-
     }
 
     public double totalPrice(WebElement price, int expectedQuantity){
@@ -84,7 +83,6 @@ public class tunganh222Z {
         double priceString = Double.parseDouble(price.getText().replace("$",""));
         double totalPrice = priceString * expectedQuantity;
         return totalPrice;
-
     }
 
     public void  addToCart(By productTable, WebElement product, int expectedQuantity){
