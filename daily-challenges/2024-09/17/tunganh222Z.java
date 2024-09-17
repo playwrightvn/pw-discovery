@@ -56,18 +56,24 @@ public class tunganh222Z {
 
         //Add to cart product1
         product1.click();
+        WebElement quantity1 = driver.findElement(
+                By.xpath("//td[text()='Product 1']/parent::tr/td[3]"));
         By product1Table = By.xpath("//td[text()='Product 1']/parent::tr");
-        addToCart(product1Table, product1, expectedQuantity1);
+        addToCart(product1Table, product1, quantity1,expectedQuantity1);
 
         //Add to cart product2
         product2.click();
+        WebElement quantity2 = driver.findElement(
+                By.xpath("//td[text()='Product 2']/parent::tr/td[3]"));
         By product2Table = By.xpath("//td[text()='Product 2']/parent::tr");
-        addToCart(product2Table, product2, expectedQuantity2);
+        addToCart(product2Table, product2, quantity2, expectedQuantity2);
 
         //Add to cart product3
         product3.click();
+        WebElement quantity3 = driver.findElement(
+                By.xpath("//td[text()='Product 3']/parent::tr/td[3]"));
         By product3Table = By.xpath("//td[text()='Product 3']/parent::tr");
-        addToCart(product3Table, product3, expectedQuantity3);
+        addToCart(product3Table, product3, quantity3, expectedQuantity3);
 
         //Check total price
         double totalPriceD = totalPrice(price1,expectedQuantity1) + totalPrice(price2,expectedQuantity2) +totalPrice(price3,expectedQuantity3);
@@ -85,12 +91,10 @@ public class tunganh222Z {
         return totalPrice;
     }
 
-    public void  addToCart(By productTable, WebElement product, int expectedQuantity){
+    public void  addToCart(By productTable, WebElement product, WebElement quantity, int expectedQuantity){
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(productTable));
         if (driver.findElement(productTable).isDisplayed()){
             for (int i = 1; i < expectedQuantity ; i++){
-                WebElement quantity = driver.findElement(
-                        By.xpath("//td[text()='Product 1']/parent::tr/td[3]"));
                 if (!quantity.equals(expectedQuantity)){
                     product.click();
                 }
