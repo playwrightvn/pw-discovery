@@ -26,3 +26,7 @@ Viết code automation cho test case sau (có thể sử copy code từ bài tr�
 - Click vào: Bài học 1: Register Page (có đủ các element)
 - Điền vào đầy đủ các thông tin của user
 - Kiểm tra kết quả đúng như thông tin đã điền.
+
+await page.locator(selector).evaluate((element, arg1, arg2, ...) => {
+  // Mã JavaScript thực thi trên trình duyệt
+}, argument1, argument2, ...);
