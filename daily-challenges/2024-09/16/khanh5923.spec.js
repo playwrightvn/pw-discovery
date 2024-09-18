@@ -7,7 +7,7 @@ function revereString(input){
 revereString("tranquangkhanhsiudeptrai")
 
 import {test, expect} from '@playwright/test'
-test.only('bai2', async ({ page }) => {
+test('bai2', async ({ page }) => {
     await page.goto("https://material.playwrightvn.com/")
     await page.locator(`//a[contains(text(),'Bài học 1: Register Page (có đủ các element)')]`).click()
     const testData = {
