@@ -21,7 +21,7 @@ function isPrime(number: number) {
         console.log(`"Số này không phải là số nguyên tố"`);
     }
     else if (number > 2) {
-        for (let i = 0; i <= number - 1; i += 2) {
+        for (let i = 2; i <= Math.sqrt(number); i += 2) {
             if (number % i == 0) {
                 console.log(`"Số này không phải là số nguyên tố"`);
             }
@@ -57,32 +57,31 @@ test('min240917', async ({ page }) => {
         qtyP2: 2,
         qtyP3: 3
     }
+    const product1 = page.locator(`//button[@data-product-id='1']`);
+    const product2 = page.locator(`//button[@data-product-id='2']`);
+    const product3 = page.locator(`//button[@data-product-id='3']`);
 
     await page.goto("https://material.playwrightvn.com/");
     await page.locator(`//a[normalize-space(text())='Bài học 2: Product page']`).click();
     // Thêm vào giỏ hàng 2 sản phẩm 1.
-    await page.locator(`//button[@data-product-id='1']`).click()
-    await page.locator(`//button[@data-product-id='1']`).click()
+    await product1.click({ clickCount: 2});
     // Thêm vào giỏ hàng 2 sản phẩm 2
-    await page.locator(`//button[@data-product-id='2']`).click()
-    await page.locator(`//button[@data-product-id='2']`).click()
+    await product2.click({ clickCount: 2});
     // Thêm vào giỏ hàng 3 sản phẩm 3
-    await page.locator(`//button[@data-product-id='3']`).click()
-    await page.locator(`//button[@data-product-id='3']`).click()
-    await page.locator(`//button[@data-product-id='3']`).click()
+    await product3.click({ clickCount: 2});
     // Kiểm số lượng sản phẩm đúng
-    let actual_qtyP1 = await page.locator("(//td[text()='Product 1']/following-sibling::td)[2]").innerText()
-    await expect(Number(actual_qtyP1)).toEqual(testData.qtyP1)
+    let actualQtyP1 = await page.locator("(//td[text()='Product 1']/following-sibling::td)[2]").innerText()
+    await expect(Number(actualQtyP1)).toEqual(testData.qtyP1)
 
-    let actual_qtyP2 = await page.locator("(//td[text()='Product 2']/following-sibling::td)[2]").innerText()
-    await expect(Number(actual_qtyP2)).toEqual(testData.qtyP2)
+    let actualQtyP2 = await page.locator("(//td[text()='Product 2']/following-sibling::td)[2]").innerText()
+    await expect(Number(actualQtyP2)).toEqual(testData.qtyP2)
 
-    let actual_qtyP3 = await page.locator("(//td[text()='Product 3']/following-sibling::td)[2]").innerText()
-    await expect(Number(actual_qtyP3)).toEqual(testData.qtyP3)
+    let actualQtyP3 = await page.locator("(//td[text()='Product 3']/following-sibling::td)[2]").innerText()
+    await expect(Number(actualQtyP3)).toEqual(testData.qtyP3)
     // Kiểm tra tổng tiền sản phẩm đúng (tổng tiền = tổng (số lượng * đơn giá))
     let totalPrice: number
     totalPrice = 10.000 * 2 + 20.000 * 2 + 30.000 * 3
-    let format_totalPrice = `$${totalPrice}.00`
+    let formatTotalPrice = `$${totalPrice}.00`
     let price = await page.locator(`//td[@class="total-price"]`).innerText()
-    await expect(price).toEqual(format_totalPrice)
+    await expect(price).toEqual(formatTotalPrice)
 })
