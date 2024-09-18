@@ -80,7 +80,6 @@ public class tunganh222Z {
     }
 
     public double totalPrices(WebElement price, int expectedQuantity){
-        //
         double priceString = Double.parseDouble(price.getText().replace("$",""));
         double totalPrice = priceString * expectedQuantity;
         return totalPrice;
@@ -103,10 +102,10 @@ public class tunganh222Z {
     }
 
     public String isPrime(int number) {
+        if (number <= 1) {
+            return "Số này không phải là số nguyên tố";
+        }
         for (int i = 2; i < Math.sqrt(number); i++) {
-            if (number <= 2){
-                return "Số này không phải là số nguyên tố";
-            }
             if (number % i ==0 ) {
                 return "Số này không phải là số nguyên tố";
             }
