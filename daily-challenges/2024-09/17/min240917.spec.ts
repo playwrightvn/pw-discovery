@@ -68,7 +68,7 @@ test('min240917', async ({ page }) => {
     // Thêm vào giỏ hàng 2 sản phẩm 2
     await product2.click({ clickCount: 2});
     // Thêm vào giỏ hàng 3 sản phẩm 3
-    await product3.click({ clickCount: 2});
+    await product3.click({ clickCount: 3});
     // Kiểm số lượng sản phẩm đúng
     let actualQtyP1 = await page.locator("(//td[text()='Product 1']/following-sibling::td)[2]").innerText()
     await expect(Number(actualQtyP1)).toEqual(testData.qtyP1)
