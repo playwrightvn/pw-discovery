@@ -1,16 +1,16 @@
+import { test, expect } from '@playwright/test';
+
 // Javascript
 
-// function reverseString(str) {
-//     return str.split('').reverse().join('');
-// }
+function reverseString(str) {
+    return str.split('').reverse().join('');
+}
 
-// const inputString = "ThaoThanh";
-// const reversedString = reverseString(inputString);
-// console.log("Chuỗi đảo ngược:", reversedString);
+const inputString = "ThaoThanh";
+const reversedString = reverseString(inputString);
+console.log("Chuỗi đảo ngược:", reversedString);
 
 // Playwright
-
-import { test, expect } from '@playwright/test';
 
 test('Register Page Test', async ({ page }) => {
 
@@ -37,16 +37,17 @@ test('Register Page Test', async ({ page }) => {
   await page.fill('#bio', testData.bio);
 
   await page.getByRole("button", { name: "Register" }).click();
-
-
   await expect(page.locator('tbody tr')).toHaveCount(1);
   
   const cells = page.locator('tbody td');
+
   await expect(cells.nth(1)).toHaveText(testData.username);
   await expect(cells.nth(2)).toHaveText(testData.email);
-  await expect(page.locator("//tbody//td").nth(3)).toContainText(`Gender: female`);
-  await expect(page.locator("//tbody//td").nth(3)).toContainText(`Hobbies: traveling`);
-  await expect(page.locator("//tbody//td").nth(3)).toContainText(`Country: canada`);
-  await expect(page.locator("//tbody//td").nth(3)).toContainText(`Date of Birth: ${testData.dob}`);
-  await expect(page.locator("//tbody//td").nth(3)).toContainText(`Biography: ${testData.bio}`);
+  
+  const detailsCell = cells.nth(3);
+  await expect(detailsCell).toContainText(`Gender: female`);
+  await expect(detailsCell).toContainText(`Hobbies: traveling`);
+  await expect(detailsCell).toContainText(`Country: canada`);
+  await expect(detailsCell).toContainText(`Date of Birth: ${testData.dob}`);
+  await expect(detailsCell).toContainText(`Biography: ${testData.bio}`);
 });

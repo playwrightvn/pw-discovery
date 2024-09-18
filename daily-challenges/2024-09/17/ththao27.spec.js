@@ -17,8 +17,7 @@ function isPrime(n) {
     return true;
 }
 
-isPrime(5); 
-isPrime(4);  
+console.log("2:", isPrime(2));
 
 //playwright
 
@@ -50,7 +49,6 @@ test('ththao27 - 2024-09 day 17', async ({ page }) => {
     await expect(cartItems.locator(`tr:nth-child(${row}) td:nth-child(4)`)).toHaveText(`$${productTotalPrice.toFixed(2)}`);
   }
 
-  // Assert total price in cart
   expect(totalPrice).toBe(150);
   await expect(page.locator('.total-price')).toHaveText(`$${totalPrice.toFixed(2)}`);
 });
