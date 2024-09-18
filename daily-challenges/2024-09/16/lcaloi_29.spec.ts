@@ -2,14 +2,10 @@
 import { expect, test } from "@playwright/test";
 import path from "path";
 
-
 function reverseString(input: string): string {
     return input.split('').reverse().join('');
 }
 console.log(reverseString('Nhungloidoigian'));
-
-
-
 
 //Playwright
 test('Solution 16/09/2024', async ({ page }) => {
