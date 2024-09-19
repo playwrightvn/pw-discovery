@@ -12,35 +12,35 @@ Trong bài tập này, bạn sẽ tạo một hệ thống quản lý danh sách
 4. Viết hàm `calculateTotal()` để tính tổng giá của tất cả sản phẩm trong danh sách.
 */
 
-// const productList = {
-//     products: [],
+const productList = {
+    products: [],
 
-//     addProduct: function(name, price) {
-//         const product = {
-//             name: name,
-//             price: price,
-//         }
-//         this.products.push(product)
-//     },
+    addProduct: function(name, price) {
+        const product = {
+            name: name,
+            price: price,
+        }
+        this.products.push(product)
+    },
 
-//     removeProduct: function(name) {
-//         this.products = this.products.filter(product => product.name !== name)
-//     },
+    removeProduct: function(name) {
+        this.products = this.products.filter(product => product.name !== name)
+    },
 
-//     calculateTotal: function() {
-//         return this.products.reduce((total, product) => {
-//             return total + (product.price)
-//         }, 0)
-//     }
-// }
+    calculateTotal: function() {
+        return this.products.reduce((total, product) => {
+            return total + (product.price)
+        }, 0)
+    }
+}
 
-// productList.addProduct('Sản phẩm A', 100)
-// productList.addProduct('Sản phẩm B', 150)
-// productList.addProduct('Sản phẩm C', 150)
-// productList.addProduct('Sản phẩm D', 250)
+productList.addProduct('Sản phẩm A', 100)
+productList.addProduct('Sản phẩm B', 150)
+productList.addProduct('Sản phẩm C', 150)
+productList.addProduct('Sản phẩm D', 250)
 
-// productList.removeProduct('Sản phẩm B')
-// console.log('Tổng giá trị:', productList.calculateTotal())
+productList.removeProduct('Sản phẩm B')
+console.log('Tổng giá trị:', productList.calculateTotal())
 
 /*
 # Playwright
