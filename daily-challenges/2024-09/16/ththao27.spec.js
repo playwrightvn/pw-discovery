@@ -13,7 +13,6 @@ console.log("Chuỗi đảo ngược:", reversedString);
 // Playwright
 
 test('Register Page Test', async ({ page }) => {
-
   await page.goto("https://material.playwrightvn.com/");
   await page.getByRole("link", { name: /Register Page/}).click();
 
