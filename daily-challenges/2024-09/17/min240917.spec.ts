@@ -10,29 +10,29 @@ Một số nguyên tố là số chỉ có đúng hai ước là 1 và chính n�
 - Nếu số là số nguyên tố, in ra "Số này là số nguyên tố". Nếu không phải, in ra "Số này không phải là số nguyên tố". 
 */
 
-function isPrime(number: number) {
-    if (number < 2) {
-        console.log(`"Số này không phải là số nguyên tố"`);
-    }
-    else if (number == 2) {
-        console.log(`"Số này là số nguyên tố"`);
-    }
-    else if (number % 2 == 0) {
-        console.log(`"Số này không phải là số nguyên tố"`);
-    }
-    else if (number > 2) {
-        for (let i = 2; i <= Math.sqrt(number); i += 2) {
-            if (number % i == 0) {
-                console.log(`"Số này không phải là số nguyên tố"`);
-            }
-            else {
-                console.log(`"Số này là số nguyên tố"`);
-            }
-        }
-    }
-}
-let number = 4
-isPrime(number)
+// function isPrime(number: number) {
+//     if (number < 2) {
+//         console.log(`"Số này không phải là số nguyên tố"`);
+//     }
+//     else if (number == 2) {
+//         console.log(`"Số này là số nguyên tố"`);
+//     }
+//     else if (number % 2 == 0) {
+//         console.log(`"Số này không phải là số nguyên tố"`);
+//     }
+//     else if (number > 2) {
+//         for (let i = 2; i <= Math.sqrt(number); i += 2) {
+//             if (number % i == 0) {
+//                 console.log(`"Số này không phải là số nguyên tố"`);
+//             }
+//             else {
+//                 console.log(`"Số này là số nguyên tố"`);
+//             }
+//         }
+//     }
+// }
+// let number = 4
+// isPrime(number)
 
 /*
 # Playwright
@@ -70,18 +70,13 @@ test('min240917', async ({ page }) => {
     // Thêm vào giỏ hàng 3 sản phẩm 3
     await product3.click({ clickCount: 3});
     // Kiểm số lượng sản phẩm đúng
-    let actualQtyP1 = await page.locator("(//td[text()='Product 1']/following-sibling::td)[2]").innerText()
-    await expect(Number(actualQtyP1)).toEqual(testData.qtyP1)
-
-    let actualQtyP2 = await page.locator("(//td[text()='Product 2']/following-sibling::td)[2]").innerText()
-    await expect(Number(actualQtyP2)).toEqual(testData.qtyP2)
-
-    let actualQtyP3 = await page.locator("(//td[text()='Product 3']/following-sibling::td)[2]").innerText()
-    await expect(Number(actualQtyP3)).toEqual(testData.qtyP3)
+    await expect(page.locator("(//td[text()='Product 1']/following-sibling::td)[2]")).toHaveText(`${testData.qtyP1}`)
+    await expect(page.locator("(//td[text()='Product 2']/following-sibling::td)[2]")).toHaveText(`${testData.qtyP2}`)
+    await expect(page.locator("(//td[text()='Product 3']/following-sibling::td)[2]")).toHaveText(`${testData.qtyP3}`)
     // Kiểm tra tổng tiền sản phẩm đúng (tổng tiền = tổng (số lượng * đơn giá))
     let totalPrice: number
     totalPrice = 10.000 * 2 + 20.000 * 2 + 30.000 * 3
     let formatTotalPrice = `$${totalPrice}.00`
     let price = await page.locator(`//td[@class="total-price"]`).innerText()
-    await expect(price).toEqual(formatTotalPrice)
+    expect(price).toEqual(formatTotalPrice)
 })
