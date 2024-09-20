@@ -33,13 +33,14 @@ test('Todo page automation - ngày 18 tháng 9', async ({ page }) => {
   page.once('dialog', async dialog => {
     await dialog.accept(editedTodoContent);
   });
-
   await page.getByRole('button', { name: 'Edit' }).first().click();
   await expect(page.getByText(editedTodoContent)).toBeVisible();
 
+  page.once('dialog', async dialog => {
+    await dialog.accept();
+  });
   await page.getByRole('button', { name: 'Delete' }).click();
-
-  await expect(taskList.locator('li')).toHaveCount(0); // chỗ này em chưa biết cách xử lí được cái dialog delete
+  await expect(taskList.locator('li')).toHaveCount(0); 
 });
 
 
