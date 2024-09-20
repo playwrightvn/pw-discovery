@@ -28,4 +28,4 @@ Viết code automation cho test case sau:
 - Double click vào ô: "Nhấn hoặc nhấn đúp vào đây!"
 - Kiểm tra: số lần nhân = 3, loại nhấn: đúp, phím kèm theo: không có
 - Giữ shift và click vào ô: "Nhấn hoặc nhấn đúp vào đây!"
-- Kiểm tra: số lần nhấn = 4, loại nhấn: đơn, phím kèm theo: không có
+- Kiểm tra: số lần nhấn = 4, loại nhấn: đơn, phím kèm theo: Shift
