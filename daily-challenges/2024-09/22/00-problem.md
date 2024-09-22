@@ -17,7 +17,7 @@ Số từ trong một câu là tổng số các từ cách nhau bởi khoảng t
 
 **Output 1**:
 ```javascript
-"Số từ: 6"
+"Số từ: 7"
 ```
 
 **Input 2**:
@@ -27,7 +27,7 @@ Số từ trong một câu là tổng số các từ cách nhau bởi khoảng t
 
 **Output 2**:
 ```javascript
-"Số từ: 3"
+"Số từ: 4"
 ```
 
 **Input 3**:
