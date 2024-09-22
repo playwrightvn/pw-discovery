@@ -53,9 +53,8 @@ Viết code automation cho test case sau:
 */
 
 import { test, expect } from '@playwright/test'
-import exp from 'constants'
 
-test('min240917', async ({ page }) => {
+test('min240919', async ({ page }) => {
     await page.goto("https://material.playwrightvn.com/")
     await page.locator(`//a[normalize-space(text())='Bài học 5: Puzzle drag and drop game']`).click()
     let number = await page.locator(`//div[@class="puzzle-container"]/div`).count()
@@ -68,7 +67,8 @@ test('min240917', async ({ page }) => {
         } else {
             console.log('Alert content is incorrect')
         }
-        await dialog.accept()
+        expect(await dialog.message()).toBe(`Congratulations! You completed the puzzle.`)
+        await dialog.dismiss()
     })
 
 })
