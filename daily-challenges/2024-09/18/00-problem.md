@@ -43,4 +43,3 @@ Viết code automation cho test case sau:
 - Verify nội dung đã được chỉnh sửa
 - Xoá Todo
 - Verify Todo đã được xoá.
-
