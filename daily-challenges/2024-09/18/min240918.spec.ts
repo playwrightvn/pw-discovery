@@ -46,8 +46,7 @@ test('min240918', async ({ page }) => {
     await page.locator(`//a[normalize-space(text())='Bài học 3: Todo page']`).click()
     await page.locator(`//input[@id='new-task']`).fill(`Xin chào, đây là bài thực hành ngày 18 tháng 9`)
     await page.getByRole('button', { name: 'Add Task'}).click()
-    let numberOfTask= await page.locator(`//ul[@id="task-list"]`).count()
-    await expect(numberOfTask).toEqual(1)
+    await expect(page.locator(`//ul[@id="task-list"]`)).toHaveCount(1)
     page.on('dialog', async dialog => {
         await dialog.accept('Xin chào, đây là bài thực hành ngày 18 tháng 9 - phiên bản đã chỉnh sửa')
     })
