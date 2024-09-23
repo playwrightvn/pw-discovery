@@ -12,6 +12,9 @@ Cho một mảng các số nguyên, bạn cần tìm ra số lớn nhất trong 
 
 function findLargestNumber(arr) {
     let max = arr[0]
+    if (arr.length === 0){
+        console.log(`Mảng rỗng`)
+    }
     for (let i = 1; i < arr.length; i++) {
         if (arr[i] > max) {
             max = arr[i]
