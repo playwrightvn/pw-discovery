@@ -8,10 +8,6 @@ Cho một mảng các số nguyên, bạn cần tính tổng của tất cả c�
 - Nếu mảng chứa các giá trị không phải là số, bỏ qua những giá trị đó.
 
 ## Ví dụ:
-
-
-#### Ví dụ:
-
 **Input 1**:
 ```javascript
 [1, 2, 3, 4, 5]
