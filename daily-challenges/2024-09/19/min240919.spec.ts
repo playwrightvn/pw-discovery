@@ -58,9 +58,6 @@ test('min240919', async ({ page }) => {
     await page.goto("https://material.playwrightvn.com/")
     await page.locator(`//a[normalize-space(text())='Bài học 5: Puzzle drag and drop game']`).click()
     let number = await page.locator(`//div[@class="puzzle-container"]/div`).count()
-    for (let i = 1; i < number + 1; i++) {
-        await page.locator(`//div[@id="piece-${i}"]`).dragTo(page.locator(`//div[@data-piece="${i}"]`))
-    }
     page.on('dialog', async dialog => {
         if (dialog.message() === 'Congratulations! You completed the puzzle.') {
             console.log('Alert content is correct!')
@@ -70,5 +67,8 @@ test('min240919', async ({ page }) => {
         expect(await dialog.message()).toBe(`Congratulations! You completed the puzzle.`)
         await dialog.dismiss()
     })
+    for (let i = 1; i < number + 1; i++) {
+        await page.locator(`//div[@id="piece-${i}"]`).dragTo(page.locator(`//div[@data-piece="${i}"]`))
+    }
 
 })
