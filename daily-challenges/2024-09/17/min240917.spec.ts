@@ -10,29 +10,29 @@ Một số nguyên tố là số chỉ có đúng hai ước là 1 và chính n�
 - Nếu số là số nguyên tố, in ra "Số này là số nguyên tố". Nếu không phải, in ra "Số này không phải là số nguyên tố". 
 */
 
-// function isPrime(number: number) {
-//     if (number < 2) {
-//         console.log(`"Số này không phải là số nguyên tố"`);
-//     }
-//     else if (number == 2) {
-//         console.log(`"Số này là số nguyên tố"`);
-//     }
-//     else if (number % 2 == 0) {
-//         console.log(`"Số này không phải là số nguyên tố"`);
-//     }
-//     else if (number > 2) {
-//         for (let i = 2; i <= Math.sqrt(number); i += 2) {
-//             if (number % i == 0) {
-//                 console.log(`"Số này không phải là số nguyên tố"`);
-//             }
-//             else {
-//                 console.log(`"Số này là số nguyên tố"`);
-//             }
-//         }
-//     }
-// }
-// let number = 4
-// isPrime(number)
+function isPrime(number) {
+    if (number < 2) {
+        console.log(`"Số này không phải là số nguyên tố"`);
+    }
+    else if (number == 2) {
+        console.log(`"Số này là số nguyên tố"`);
+    }
+    else if (number % 2 == 0) {
+        console.log(`"Số này không phải là số nguyên tố"`);
+    }
+    else if (number > 2) {
+        for (let i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i === 0) {
+                console.log(`"Số này không phải là số nguyên tố"`);
+            }
+            else {
+                console.log(`"Số này là số nguyên tố"`);
+            }
+        }
+    }
+}
+let number = 12
+isPrime(number)
 
 /*
 # Playwright
