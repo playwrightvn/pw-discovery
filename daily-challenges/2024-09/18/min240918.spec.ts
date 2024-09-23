@@ -46,7 +46,7 @@ test('min240918', async ({ page }) => {
     await page.locator(`//a[normalize-space(text())='Bài học 3: Todo page']`).click()
     await page.locator(`//input[@id='new-task']`).fill(`Xin chào, đây là bài thực hành ngày 18 tháng 9`)
     await page.getByRole('button', { name: 'Add Task'}).click()
-    await expect(page.locator(`//ul[@id="task-list"]`)).toHaveCount(1)
+    await expect(page.locator(`//ul[@id="task-list"]/li`)).toHaveCount(1)
     page.on('dialog', async dialog => {
         await dialog.accept('Xin chào, đây là bài thực hành ngày 18 tháng 9 - phiên bản đã chỉnh sửa')
     })
@@ -55,4 +55,5 @@ test('min240918', async ({ page }) => {
     await expect(page.locator(`//span[text()='Xin chào, đây là bài thực hành ngày 18 tháng 9 - phiên bản đã chỉnh sửa']`)).toBeVisible()
     await page.click(`//button[text()='Delete']`)
     await page.getByRole('button').click() 
+    await expect(page.locator(`//ul[@id="task-list"]/li`)).toHaveCount(0)
 })
