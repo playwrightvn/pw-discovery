@@ -14,7 +14,7 @@ Số từ trong một câu là tổng số các từ cách nhau bởi khoảng t
 function countWords(words: string) {
     const wordArr = words.trim().split(/\s+/)
     if (wordArr[0] === '') {
-        return '0';
+        return '0'
     }
     return wordArr.length
 }
