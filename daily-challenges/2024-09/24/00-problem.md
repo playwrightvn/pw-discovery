@@ -16,4 +16,5 @@ Output khác (với ngày hiện tại là 5 tháng 1, năm 2024):
 "Ngày hiện tại là: 05/01/2024"
 
 # Playwright
+- Cho trang web sau: https://demo.playwright.dev/api-mocking/
 - Sử dụng kĩ thuật mocking trong Playwright để custom danh sách các loại quả trả về thành: ["Cam", "Táo", "Xoài"]
