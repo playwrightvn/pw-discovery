@@ -47,18 +47,18 @@ test('min240920', async ({ page }) => {
     await page.goto('https://material.playwrightvn.com/')
     await page.locator(`//a[normalize-space(text())='Bài học 5: Xử lý mouse event']`).click()
     
-    const clickArea = page.click(`//div[@id='clickArea']`);
+    const clickArea = page.locator(`//div[@id='clickArea']`);
     await clickArea.click()
     await expect(page.locator(`//p[@id='clickCount']`)).toHaveText('Số lần nhấn: 1')
     await expect(page.locator(`//p[@id='clickType']`)).toHaveText('Loại nhấn: Đơn')
     await expect(page.locator(`//p[@id='modifierKeys']`)).toHaveText('Phím kèm theo: Không có')
 
-    await page.dblclick(`//div[@id='clickArea']`)
+    await clickArea.dblclick()
     await expect(page.locator(`//p[@id='clickCount']`)).toHaveText('Số lần nhấn: 3')
     await expect(page.locator(`//p[@id='clickType']`)).toHaveText('Loại nhấn: Đúp')
     await expect(page.locator(`//p[@id='modifierKeys']`)).toHaveText('Phím kèm theo: Không có')
 
-    await page.click(`//div[@id='clickArea']`, { modifiers: ['Shift'] }) 
+    await clickArea.click({ modifiers: ['Shift'] }) 
     await expect(page.locator(`//p[@id='clickCount']`)).toHaveText('Số lần nhấn: 4')
     await expect(page.locator(`//p[@id='clickType']`)).toHaveText('Loại nhấn: Đơn')
     await expect(page.locator(`//p[@id='modifierKeys']`)).toHaveText('Phím kèm theo: Shift')
