@@ -11,10 +11,15 @@ Số từ trong một câu là tổng số các từ cách nhau bởi khoảng t
 - Chuỗi có thể chứa các dấu câu như dấu chấm, dấu phẩy, hoặc dấu chấm than, nhưng chỉ tính số từ dựa trên các khoảng trắng ngăn cách.
 */
 
-function countWords(words) {
-    words = words.trim().split(/\s+/)
-    return words.length
+function countWords(words: string) {
+    const wordArr = words.trim().split(/\s+/)
+    if (wordArr[0] === '') {
+        return '0';
+    }
+    return wordArr.length
 }
 
 let count = countWords(`Chuỗi có thể chứa các dấu câu như dấu chấm, dấu phẩy, hoặc dấu chấm than, nhưng chỉ tính số từ dựa trên các khoảng trắng ngăn cách`)
 console.log(count)
+let count1 = countWords('    ')
+console.log(count1)
