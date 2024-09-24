@@ -46,7 +46,7 @@ import { test, expect } from '@playwright/test'
 test('min240920', async ({ page }) => {
     await page.goto('https://material.playwrightvn.com/')
     await page.locator(`//a[normalize-space(text())='Bài học 5: Xử lý mouse event']`).click()
-
+    
     await page.click(`//div[@id='clickArea']`)
     await expect(page.locator(`//p[@id='clickCount']`)).toHaveText('Số lần nhấn: 1')
     await expect(page.locator(`//p[@id='clickType']`)).toHaveText('Loại nhấn: Đơn')
