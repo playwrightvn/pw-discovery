@@ -43,14 +43,14 @@ test('ththao27 -19-09 -drag and drop', async ({ page }) => {
 
   const items = [1, 2, 3, 4];
 
+  page.on('dialog', async dialog => {
+    expect(dialog.message()).toBe("Congratulations! You completed the puzzle.");
+    await dialog.dismiss(); 
+  });
+
   for (const index of items) {
       const source = page.getByText(`${index}`);
       const target = page.locator(`.dropzones-container > div:nth-child(${index})`);
       await source.dragTo(target);
   }
-
-  page.on('dialog', async dialog => {
-    expect(dialog.message()).toBe("Congratulations! You completed the puzzle.");
-    await dialog.dismiss(); 
-  });
 });
