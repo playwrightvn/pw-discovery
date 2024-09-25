@@ -25,18 +25,50 @@ console.log(sumArray([]));
 
 // Playwright
 
-test("ththao27 - 23-09", async ({ request }) => {
-    let randomNumber = Math.random();
+test.describe("ththao27 - 23-09", () => {
+  let userId = null;
+  let token = null;
+  const newUser = {
+    userName: 'ThaoTran127',
+    password: 'Tester@123'
+  };
 
-    let newUser = {
-        userName: 'ThaoTran$' + randomNumber,
-        password: 'Tester@123'
-    };
-    let response = await request.post("https://demoqa.com/Account/v1/User", {
-        data: newUser,
+  test("Verify create user successfully via API", async ({ request }) => {
+    const response = await request.post('https://demoqa.com/Account/v1/User', {
+      data: newUser,
     });
-
-    let responseBody = JSON.parse(await response.text());
+  
+    const responseBody = JSON.parse(await response.text());
     expect(response.status()).toBe(201);
     expect(responseBody.username).toBe(newUser.userName);
+    
+    userId = responseBody.userID;
+
+    //Generate token
+    const responseGenToken = await request.post('https://demoqa.com/Account/v1/GenerateToken', {
+      data: newUser,
+    });
+    const responseBodyGenToken = JSON.parse(await responseGenToken.text());
+    
+    expect(responseGenToken.status()).toBe(200);
+    
+    token = responseBodyGenToken.token;
+
+    // API Authentication
+    const responseAuth = await request.post('https://demoqa.com/Account/v1/Authorized', {
+      data: newUser,
+    });
+    expect(responseAuth.status()).toBe(200);
+    });
+
+  test.afterAll(async ({ request }) => {
+    //Delete account sau khi create
+    let deleteResponse = await request.delete(`https://demoqa.com/Account/v1/User/${userId}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+    expect(deleteResponse.status()).toBe(204);
   });
+});
