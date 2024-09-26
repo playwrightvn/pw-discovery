@@ -22,6 +22,10 @@ test('2024-09 day 26', async ({ page }) => {
     for (let i = 0; i < totalRow; i++) {
         const row = rows.nth(i);
         if (await row.isVisible()) {
+            const classCell = row.locator('td').nth(2);
+            const classCellText = await classCell.innerText();
+            const hasSuffixA4 = classCellText.endsWith('A4');
+            expect(hasSuffixA4).toBe(true);
             visibleCount++;
         }
     }
