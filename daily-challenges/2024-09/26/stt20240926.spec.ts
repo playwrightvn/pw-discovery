@@ -17,7 +17,8 @@ test('2024-09 day 26', async ({ page }) => {
 
     // Verify there is only 1 visible row, which is class *A4
     let rows = page.locator('#studentTable tbody tr');
-    let totalRow = await rows.count();
+    const totalRow = await rows.count();
+
     let visibleCount = 0;
     for (let i = 0; i < totalRow; i++) {
         const row = rows.nth(i);
@@ -35,9 +36,8 @@ test('2024-09 day 26', async ({ page }) => {
     await page.fill("#searchInput", "");
     await page.click("#searchButton");
 
-    // Verify all rows are visible now 
+    // Verify all rows are visible back
     rows = page.locator('#studentTable tbody tr');
-    totalRow = await rows.count();
     visibleCount = 0;
     for (let i = 0; i < totalRow; i++) {
         const row = rows.nth(i);
