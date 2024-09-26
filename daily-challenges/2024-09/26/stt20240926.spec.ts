@@ -15,7 +15,7 @@ test('2024-09 day 26', async ({ page }) => {
     await page.fill("#searchInput", "A4");
     await page.click("#searchButton");
 
-    // Verify there is only 1 visible row
+    // Verify there is only 1 visible row, which is class *A4
     let rows = page.locator('#studentTable tbody tr');
     let totalRow = await rows.count();
     let visibleCount = 0;
