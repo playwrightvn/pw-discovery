@@ -13,8 +13,8 @@ STT,Tên học sinh,Lớp,Điểm Toán,Điểm Lý,Điểm Hóa
 1,Nguyễn Văn A,10A1,8,7,9
 2,Trần Thị B,10A2,9,6,8
 */
-const originHeader = "STT,Tên học sinh,Lớp,Điểm Toán,Điểm Lý,Điểm Hóa";
-const headerMap = new Map<string, string>([
+const originHeaderRow = "STT,Tên học sinh,Lớp,Điểm Toán,Điểm Lý,Điểm Hóa";
+const headerMapping = new Map<string, string>([
     ['STT', 'no'],
     ['Tên học sinh', 'fullname'],
     ['Lớp', 'class'],
@@ -32,7 +32,7 @@ const newRecords = [
 test('2024-09-27 challenge', async ({ page }) => {
     await page.goto("https://material.playwrightvn.com/021-import-export.html");
 
-    // export
+    // export to CSV
     const tmpDir = os.tmpdir();
     const downloadPromise = page.waitForEvent('download');
     await page.locator("#exportButton").click();
@@ -41,18 +41,18 @@ test('2024-09-27 challenge', async ({ page }) => {
     const savedPath = path.join(tmpDir, downloadFile.suggestedFilename());
     await downloadFile.saveAs(savedPath);
 
-    // read downloaded csv
+    // read and parse downloaded CSV, re-mapping header
     const fileContent = fs.readFileSync(savedPath, { encoding: 'utf-8' });
     const records = parse(fileContent, {
         delimiter: ',',
         trim: true,
         skip_empty_lines: true,
         columns: (headers) => {
-            return headers.map(header => headerMap.get(header) || header);
+            return headers.map(header => headerMapping.get(header));
         },
     });
 
-    // transform
+    // transform data
     // remove 10A3 class
     let updatedRecords = records.filter(record => record.class != "10A3");
     // add new records with new increment ID
@@ -63,24 +63,23 @@ test('2024-09-27 challenge', async ({ page }) => {
     });
     updatedRecords = [...updatedRecords, ...newRecords];
 
-    // write to csv
-    const exportedCsvPath = path.join(tmpDir, "student_exported.csv");
+    // write back to CSV file
+    const exportedCsvPath = path.join(tmpDir, "student_to_import.csv");
     rmSync(exportedCsvPath, { force: true });
-    fs.appendFileSync(exportedCsvPath, originHeader);
+    fs.appendFileSync(exportedCsvPath, originHeaderRow);
     for (const record of updatedRecords) {
         const recordStr = Object.values(record).join(',');
         fs.appendFileSync(exportedCsvPath, '\n' + recordStr);
     }
-    // console.log(exportedCsvPath);
 
-    // import back
+    // clicking import back
     const fileChooserPromise = page.waitForEvent('filechooser');
     await page.locator('#importButton').click();
     const fileChooser = await fileChooserPromise;
     await fileChooser.setFiles(exportedCsvPath);
 
     // assert
-    // 1. check no class 10A3 is shown
+    // 1. ensure no class 10A3 is shown
     let rows = await page.locator('#studentTable tbody tr').all();
     for (const row of rows) {
         if (await row.isVisible()) {
