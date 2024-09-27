@@ -89,7 +89,7 @@ test('2024-09-27 challenge', async ({ page }) => {
         }
     }
 
-    // 2. check new records is added
+    // 2. check new records are added
     const recordsSet: Set<String> = new Set();
     for (const row of rows) {
         if (await row.isVisible()) {
