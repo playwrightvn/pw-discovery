@@ -1,6 +1,6 @@
 import path from 'path';
 import os from 'os';
-import fs, { rmSync } from 'fs';
+import fs from 'fs';
 
 import { expect, test } from '@playwright/test';
 import { parse } from 'csv-parse/sync';
@@ -65,7 +65,6 @@ test('2024-09-27 challenge', async ({ page }) => {
 
     // write back to CSV file
     const exportedCsvPath = path.join(tmpDir, "student_to_import.csv");
-    rmSync(exportedCsvPath, { force: true });
     fs.appendFileSync(exportedCsvPath, originHeaderRow);
     for (const record of updatedRecords) {
         const recordStr = Object.values(record).join(',');
