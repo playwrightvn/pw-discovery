@@ -1,15 +1,19 @@
+// javascript
 function isPrime(input){
-    if(input == 1) return console.log(`${input} khong phai la so nguyen to`)
+    if(input == 1) {
+        return console.log(`${input} khong phai la so nguyen to`)
+    }
     let sqrtInput = Math.sqrt(input)
     for(let i=2; i <= sqrtInput; i++){
-        if(input % i == 0) return console.log(`${input} khong phai so nguyen to`)
+        if(input % i == 0) {
+            return console.log(`${input} khong phai so nguyen to`)
+        }
     }
     return console.log(`${input} la so nguyen to`)
 }
 isPrime(2)
 
-//-------------------------------------------------------------
-
+//playwright
 import {test, expect} from '@playwright/test'
 test('bai3_17', async ({ page }) => {
     await page.goto(`https://material.playwrightvn.com/`)
@@ -30,14 +34,13 @@ test('bai3_17', async ({ page }) => {
             price: 30.00,
             quantity: 3
         },
-
     }
-    let Sum = 0
+    let sumPrice = 0
     for(let i = 1; i <= 3; i++){
         for(let j = 1; j <= testData[`product${i}`]["quantity"]; j++){
             await page.locator(`//button[@data-product-id="${i}"]`).click()
         }
-        Sum += testData[`product${i}`]["quantity"]*testData[`product${i}`]["price"] 
+        sumPrice += testData[`product${i}`]["quantity"]*testData[`product${i}`]["price"] 
     }
     for(let i = 1; i <= 3; i++){
         const cells = await page.locator(`//tbody//tr[${i}]//td[3]`).textContent()
@@ -45,5 +48,5 @@ test('bai3_17', async ({ page }) => {
     }
     let totalActual = await page.locator(`//td[@class='total-price']`).textContent()
     totalActual = totalActual.slice(1)
-    expect(+totalActual).toBe(Sum)
+    expect(+totalActual).toBe(sumPrice)
 });
