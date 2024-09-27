@@ -64,18 +64,19 @@ test('2024-09-27 challenge', async ({ page }) => {
     updatedRecords = [...updatedRecords, ...newRecords];
 
     // write back to CSV file
-    const exportedCsvPath = path.join(tmpDir, "student_to_import.csv");
-    fs.appendFileSync(exportedCsvPath, originHeaderRow);
+    const toImportCsvPath = path.join(tmpDir, "student_to_import.csv");
+    let csvBuffer = '';
+    csvBuffer += originHeaderRow;
     for (const record of updatedRecords) {
-        const recordStr = Object.values(record).join(',');
-        fs.appendFileSync(exportedCsvPath, '\n' + recordStr);
+        csvBuffer += '\n' + Object.values(record).join(',');
     }
+    fs.writeFileSync(toImportCsvPath, csvBuffer);
 
     // clicking import back
     const fileChooserPromise = page.waitForEvent('filechooser');
     await page.locator('#importButton').click();
     const fileChooser = await fileChooserPromise;
-    await fileChooser.setFiles(exportedCsvPath);
+    await fileChooser.setFiles(toImportCsvPath);
 
     // assert
     // 1. ensure no class 10A3 is shown
@@ -102,6 +103,6 @@ test('2024-09-27 challenge', async ({ page }) => {
 
     // cleanup
     await downloadFile.delete();
-    fs.rmSync(exportedCsvPath);
+    fs.rmSync(toImportCsvPath);
     fs.rmSync(savedPath);
 })
