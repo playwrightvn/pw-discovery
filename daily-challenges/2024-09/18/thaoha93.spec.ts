@@ -31,5 +31,5 @@ test('Day 18', async ({ page }) => {
     await expect(taskListElement.locator('span')).toHaveText(editContent);
     await page.locator('.actions').locator('button').nth(1).click();
     await expect(taskListElement).toBeHidden();
-})''
+});
 
