@@ -55,13 +55,11 @@ test('2024-09-27 challenge', async ({ page }) => {
     // transform data
     // remove 10A3 class
     let updatedRecords = records.filter(record => record.class != "10A3");
-    // add new records with new increment ID
-    const currentIDs = records.map(record => Number(record.no));
-    const maxCurrentID = Math.max(...currentIDs);
-    newRecords.forEach((record, index) => {
-        record.no = String(maxCurrentID + index + 1);
-    });
+    // append new records and re-index
     updatedRecords = [...updatedRecords, ...newRecords];
+    updatedRecords.forEach((record, index) => {
+        record.no = String(index + 1);
+    });
 
     // write back to CSV file
     const toImportCsvPath = path.join(tmpDir, "student_to_import.csv");
@@ -89,10 +87,15 @@ test('2024-09-27 challenge', async ({ page }) => {
         }
     }
 
-    // 2. check new records are added
+    // 2. check new records are added and show index correctly
     const recordsSet: Set<String> = new Set();
+    let counter = 1;
     for (const row of rows) {
         if (await row.isVisible()) {
+            const no = await row.locator('td').nth(0).innerText();
+            expect(no).toBe(String(counter));
+            counter++;
+
             recordsSet.add(`${await row.locator('td').nth(1).innerText()} - ${await row.locator('td').nth(2).innerText()}`);
         }
     }
@@ -103,6 +106,6 @@ test('2024-09-27 challenge', async ({ page }) => {
 
     // cleanup
     await downloadFile.delete();
-    fs.rmSync(toImportCsvPath);
-    fs.rmSync(savedPath);
+    fs.rmSync(toImportCsvPath, { force: true });
+    fs.rmSync(savedPath, { force: true });
 })
