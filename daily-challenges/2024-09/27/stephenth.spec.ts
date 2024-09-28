@@ -27,6 +27,9 @@ const newRecords = [
     { no: "", fullname: "Trần Thị Nga", class: "10A6", math_point: "9", physics_point: "9", chemistry_point: "9" },
 ];
 
+function buildUniqueKey(fullname: string, className: string): string {
+    return `${fullname} - ${className}`
+}
 
 
 test('2024-09-27 challenge', async ({ page }) => {
@@ -96,12 +99,14 @@ test('2024-09-27 challenge', async ({ page }) => {
             expect(no).toBe(String(counter));
             counter++;
 
-            recordsSet.add(`${await row.locator('td').nth(1).innerText()} - ${await row.locator('td').nth(2).innerText()}`);
+            const fullName = await row.locator('td').nth(1).innerText();
+            const className = await row.locator('td').nth(2).innerText();
+            recordsSet.add(buildUniqueKey(fullName, className));
         }
     }
 
     for (const record of newRecords) {
-        expect(recordsSet.has(`${record.fullname} - ${record.class}`)).toBe(true);
+        expect(recordsSet.has(buildUniqueKey(record.fullname,record.class))).toBe(true);
     }
 
     // cleanup
