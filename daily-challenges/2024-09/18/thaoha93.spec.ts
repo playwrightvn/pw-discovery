@@ -32,4 +32,3 @@ test('Day 18', async ({ page }) => {
     await page.locator('.actions').locator('button').nth(1).click();
     await expect(taskListElement).toBeHidden();
 });
-

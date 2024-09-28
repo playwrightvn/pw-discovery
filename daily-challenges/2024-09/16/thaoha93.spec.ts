@@ -55,4 +55,4 @@ test('Day 16', async ({ page }) => {
     await expect(page.locator("//tbody//td").nth(3)).toContainText(`Favorite Color: ${testData.favColor}`);
     // DEBUG PURPOSE ONLY
     await page.waitForTimeout(10* 1000);
-})
+});
