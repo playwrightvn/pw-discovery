@@ -39,7 +39,7 @@ function calculateBMI (height, weight) {
 calculateBMI (1.75,68);
 
 
-// # Playwright
+//  Playwright  
 // ## Đề bài
 // Viết code automation cho test case sau:
 // - Đi tới trang: https://material.playwrightvn.com/
