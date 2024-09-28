@@ -50,7 +50,7 @@ function calculateBMI (height, weight) {
   // ## Demo
   // ![Demo image](../images/001-2024-09-01.gif)
   
-  import {test, expect} from '@playwright/test'
+  import { test, expect } from '@playwright/test'
   
   const testData = {
     username: "Duyên",
