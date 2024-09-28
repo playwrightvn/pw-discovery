@@ -25,7 +25,7 @@ BMI = cân nặng (kg) / (chiều cao (m) * chiều cao (m))
 - Phân loại: "Bình thường"
 */
 function calculateBMI (height, weight) {
-    let bmi = (weight / (height * height));
+    let bmi = weight / (height * height);
     if (bmi < 18.5) {
         console.log ("Kết quả BMI:" + bmi, "Phân loại: Gầy");
     } else if (bmi >= 18.5 && bmi < 24.9) {
