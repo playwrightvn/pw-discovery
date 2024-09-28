@@ -27,7 +27,7 @@ function reverseString(str) {
 }
 console.log(reverseString("hello")); 
   
-// # Playwright
+//  Playwright
 // Viết code automation cho test case sau (có thể sử copy code từ bài trước để code nhanh hơn)
 // - Đi tới trang: https://material.playwrightvn.com/
 // - Click vào: Bài học 1: Register Page (có đủ các element)
