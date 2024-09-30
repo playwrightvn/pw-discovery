@@ -1,3 +1,4 @@
+import { test, expect } from '@playwright/test';
 
 /*
 # Javascript
@@ -24,34 +25,32 @@ Giải thích: Chuỗi "hello" khi đảo ngược sẽ trở thành "olleh", c�
 
 */
 function reverseString(str) {
-    return str.split("").reverse().join("");
-  }
-  console.log(reverseString("hello")); 
-  
-  //  Playwright
-  // Viết code automation cho test case sau (có thể sử copy code từ bài trước để code nhanh hơn)
-  // - Đi tới trang: https://material.playwrightvn.com/
-  // - Click vào: Bài học 1: Register Page (có đủ các element)
-  // - Điền vào đầy đủ các thông tin của user
-  // - Kiểm tra kết quả đúng như thông tin đã điền.   
-  
-  import { test, expect } from '@playwright/test';
-  
-  const dataTest = {
+  return str.split("").reverse().join("");
+}
+console.log(reverseString("hello"));
+
+//  Playwright
+// Viết code automation cho test case sau (có thể sử copy code từ bài trước để code nhanh hơn)
+// - Đi tới trang: https://material.playwrightvn.com/
+// - Click vào: Bài học 1: Register Page (có đủ các element)
+// - Điền vào đầy đủ các thông tin của user
+// - Kiểm tra kết quả đúng như thông tin đã điền.   
+
+const dataTest = {
   username: "Duyên",
   email: "duyennt1224@gmail.com",
   country: "usa",
   bio: "Duyên test",
   interest: "music",
   dob: "1995-09-19"
-  };
-  
-  test('Bài học1: Register Page', async ({ page }) => {
+};
+
+test('Bài học1: Register Page', async ({ page }) => {
   await test.step("Go to Bài học 1: Register Page", async () => {
     await page.goto('https://material.playwrightvn.com/');
     await page.getByRole('link', { name: 'Bài học 1: Register Page' }).click();
   });
-  
+
   await test.step("Fill full informations", async () => {
     await page.locator('//input[@id="username"]').fill(dataTest.username);
     await page.locator('//input[@id="email"]').fill(dataTest.email);
@@ -69,11 +68,11 @@ function reverseString(str) {
     await page.locator('//input[@id="newsletter"]').check();
     await page.locator('//span[@class="slider round"]').click();
   });
-  
+
   await test.step("Click btn Register", async () => {
     await page.click('//button[@type="submit"]');
   });
-  
+
   await test.step("Check result", async () => {
     await expect(page.locator('//tbody/tr[1]/td[2]')).toHaveText(dataTest.username);
     await expect(page.locator('//tbody/tr[1]/td[3]')).toHaveText(dataTest.email);
@@ -85,6 +84,5 @@ function reverseString(str) {
     await expect(page.locator('//tbody/tr[1]/td[4]')).toContainText('Rating: 10');
     await expect(page.locator('//tbody/tr[1]/td[4]')).toContainText('Newsletter: Yes');
     await expect(page.locator('//tbody/tr[1]/td[4]')).toContainText('Enable Feature: Yes');
-  })
   });
-  
+});
