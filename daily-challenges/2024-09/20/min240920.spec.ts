@@ -48,18 +48,21 @@ test('min240920', async ({ page }) => {
     await page.locator(`//a[normalize-space(text())='Bài học 5: Xử lý mouse event']`).click()
     
     const clickArea = page.locator(`//div[@id='clickArea']`);
-    await clickArea.click()
-    await expect(page.locator(`//p[@id='clickCount']`)).toHaveText('Số lần nhấn: 1')
-    await expect(page.locator(`//p[@id='clickType']`)).toHaveText('Loại nhấn: Đơn')
-    await expect(page.locator(`//p[@id='modifierKeys']`)).toHaveText('Phím kèm theo: Không có')
+    const clickCountLoc = page.locator(`//div[@id='clickCount']`);
+    const clickTypeLoc = page.locator(`//div[@id='clickType']`);
+    const modifierKeyLoc = page.locator(`//p[@id='modifierKeys']`);
+    
+    await expect(clickCountLoc).toHaveText('Số lần nhấn: 1')
+    await expect(clickTypeLoc).toHaveText('Loại nhấn: Đơn')
+    await expect(modifierKeyLoc).toHaveText('Phím kèm theo: Không có')
 
     await clickArea.dblclick()
-    await expect(page.locator(`//p[@id='clickCount']`)).toHaveText('Số lần nhấn: 3')
-    await expect(page.locator(`//p[@id='clickType']`)).toHaveText('Loại nhấn: Đúp')
-    await expect(page.locator(`//p[@id='modifierKeys']`)).toHaveText('Phím kèm theo: Không có')
+    await expect(clickCountLoc).toHaveText('Số lần nhấn: 3')
+    await expect(clickTypeLoc).toHaveText('Loại nhấn: Đúp')
+    await expect(modifierKeyLoc).toHaveText('Phím kèm theo: Không có')
 
     await clickArea.click({ modifiers: ['Shift'] }) 
-    await expect(page.locator(`//p[@id='clickCount']`)).toHaveText('Số lần nhấn: 4')
-    await expect(page.locator(`//p[@id='clickType']`)).toHaveText('Loại nhấn: Đơn')
-    await expect(page.locator(`//p[@id='modifierKeys']`)).toHaveText('Phím kèm theo: Shift')
+    await expect(clickCountLoc).toHaveText('Số lần nhấn: 4')
+    await expect(clickTypeLoc).toHaveText('Loại nhấn: Đơn')
+    await expect(modifierKeyLoc).toHaveText('Phím kèm theo: Shift')
 })
