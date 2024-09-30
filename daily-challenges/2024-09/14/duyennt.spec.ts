@@ -51,31 +51,24 @@ function calculateBMI (height, weight) {
   // ![Demo image](../images/001-2024-09-01.gif)
   
   import {test, expect} from '@playwright/test'
-  
   const testData = {
     username: "Duyên",
     email: "duyennt1224@gmail.com"
-  }
-  
-  test('Daily-challenges-2024-09 day 14', async ({page}) => {
-  
+  };
+  test('Daily-challenges-2024-09 day 14', async ({page}) => { 
     await test.step('Go to https://material.playwrightvn.com/', async () => {
         await page.goto('https://material.playwrightvn.com/');
     });
-  
     await test.step('Click Bài học 1: Register Page', async () => {
         await page.locator('//a[@href="01-xpath-register-page.html"]').click();
-    });
-  
+    }); 
     await test.step('Fill username, email', async () => {
         await page.locator('//input[@id="username"]').fill(testData.username);
         await page.locator('//input[@id="email"]').fill(testData.email);
     });
-  
     await test.step('Click btn Register', async () => {
         await page.locator('//button[@type="submit"]').click();
     });
-  
     await test.step('Check result', async () => {
         // const resultText = await page.textContent('.result');
         // await expect(resultText).toContain(testData.username);
