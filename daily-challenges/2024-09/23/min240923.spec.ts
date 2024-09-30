@@ -34,7 +34,7 @@ console.log(sumArray(arr))
 
 const { test, expect } = require('@playwright/test');
 
-test('should create a new account', async ( {request} ) => {
+test('min240923', async ( {request} ) => {
     const newAccountData = {
         username: 'playwright',
         password: 'pwd1234@',
@@ -44,9 +44,11 @@ test('should create a new account', async ( {request} ) => {
         data: newAccountData,
     });
 
-    expect(response.status()).toBe(201); 
-    const responseBody = await response.json();
-    expect(responseBody.username).toBe(newAccountData.username);
+    const bodyJson = await response.json()
+    console.log(bodyJson)
+
+    expect(response.status()).toEqual(201)
+    expect(bodyJson.username).toEqual(newAccountData.username)
 });
 
 
