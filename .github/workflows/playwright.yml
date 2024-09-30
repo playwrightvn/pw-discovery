@@ -1,0 +1,27 @@
+name: Run Playwright Tests on Pull Request
+
+on:
+  pull_request:
+    branches:
+      - "**"
+
+jobs:
+  playwright-test:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Fetch latest main branch
+        run: git fetch origin main
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+      - name: Install dependencies
+        run: npm install
+      - name: Install Playwright
+        run: npx playwright install chromium
+      - name: List playwright tests
+        run: git diff --name-only origin/main | grep '\.spec\.ts$'
+      - name: Run playwright tests
+        run: npx playwright test --retries=3 --workers=1 $(git diff --name-only origin/main | grep '\.spec\.ts$' | tr '\n' ' ')
