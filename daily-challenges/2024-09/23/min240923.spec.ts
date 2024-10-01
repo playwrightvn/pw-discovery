@@ -32,11 +32,11 @@ console.log(sumArray(arr))
 - Biết API documentation: https://demoqa.com/swagger/
 */
 
-const { test, expect } = require('@playwright/test');
+import { test, expect } from '@playwright/test'
 
 test('min240923', async ( {request} ) => {
     const newAccountData = {
-        username: 'playwright',
+        userName: 'playwright',
         password: 'pwd1234@',
     };
 
@@ -48,7 +48,7 @@ test('min240923', async ( {request} ) => {
     console.log(bodyJson)
 
     expect(response.status()).toEqual(201)
-    expect(bodyJson.username).toEqual(newAccountData.username)
+    expect(bodyJson.username).toEqual(newAccountData.userName)
 });
 
 
