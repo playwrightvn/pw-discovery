@@ -41,12 +41,12 @@ test ('min240926', async({ page }) => {
     
     await page.locator(`//input[@id="searchInput"]`).clear()
     await page.click("#searchButton")
-    let rowsAll = await page.locator('#studentTable tbody tr').count()
+    let totalRow = await page.locator('#studentTable tbody tr').count()
     let rowVisible = 0
     for (const row of rows) {
         if (await row.isVisible()) {
             rowVisible++
         }
     }
-    expect(rowsAll).toEqual(rowVisible)
+    expect(totalRow).toEqual(rowVisible)
 })
