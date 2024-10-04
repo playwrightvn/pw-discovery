@@ -8,9 +8,9 @@ import { parse } from 'csv-parse/sync';
 
 /*
 Sample csv file:
+
 STT,Tên học sinh,Lớp,Điểm Toán,Điểm Lý,Điểm Hóa
-1,    Nguyễn Văn A     ,10A1,8,7,9
-,,,,,
+1,Nguyễn Văn A,10A1,8,7,9
 2,Trần Thị B,10A2,9,6,8
 */
 const originHeaderRow = "STT,Tên học sinh,Lớp,Điểm Toán,Điểm Lý,Điểm Hóa";
@@ -26,6 +26,11 @@ const newRecords = [
     { no: "", fullname: "Nguyễn Văn Nam", class: "10A6", math_point: "8", physics_point: "8", chemistry_point: "8" },
     { no: "", fullname: "Trần Thị Nga", class: "10A6", math_point: "9", physics_point: "9", chemistry_point: "9" },
 ];
+
+function buildUniqueKey(fullname: string, className: string): string {
+    return `${fullname} - ${className}`
+}
+
 
 test('2024-09-27 challenge', async ({ page }) => {
     await page.goto("https://material.playwrightvn.com/021-import-export.html");
@@ -52,21 +57,18 @@ test('2024-09-27 challenge', async ({ page }) => {
 
     // transform data
     // remove 10A3 class
-    let filteredRecords = records.filter(record => record.class != "10A3");
-    // add new records with new increment ID
-
-    filteredRecords = [...filteredRecords, ...newRecords];
-
-    // Update ID
-    for (let i = 0; i < filteredRecords.length; i++) {
-        filteredRecords[i].no = i + 1;
-    }
+    let updatedRecords = records.filter(record => record.class != "10A3");
+    // append new records and re-index
+    updatedRecords = [...updatedRecords, ...newRecords];
+    updatedRecords.forEach((record, index) => {
+        record.no = String(index + 1);
+    });
 
     // write back to CSV file
     const toImportCsvPath = path.join(tmpDir, "student_to_import.csv");
     let csvBuffer = '';
     csvBuffer += originHeaderRow;
-    for (const record of filteredRecords) {
+    for (const record of updatedRecords) {
         csvBuffer += '\n' + Object.values(record).join(',');
     }
     fs.writeFileSync(toImportCsvPath, csvBuffer);
@@ -88,26 +90,27 @@ test('2024-09-27 challenge', async ({ page }) => {
         }
     }
 
-    // 2. check new records are added
+    // 2. check new records are added and show index correctly
     const recordsSet: Set<String> = new Set();
+    let counter = 1;
     for (const row of rows) {
         if (await row.isVisible()) {
-            const studentName = await row.locator('td').nth(1).innerText();
+            const no = await row.locator('td').nth(0).innerText();
+            expect(no).toBe(String(counter));
+            counter++;
+
+            const fullName = await row.locator('td').nth(1).innerText();
             const className = await row.locator('td').nth(2).innerText();
-            recordsSet.add(buildValueKey(studentName, className));
+            recordsSet.add(buildUniqueKey(fullName, className));
         }
     }
 
     for (const record of newRecords) {
-        expect(recordsSet.has(buildValueKey(record.fullname, record.class))).toBe(true);
+        expect(recordsSet.has(buildUniqueKey(record.fullname,record.class))).toBe(true);
     }
 
     // cleanup
     await downloadFile.delete();
-    fs.rmSync(toImportCsvPath);
-    fs.rmSync(savedPath);
+    fs.rmSync(toImportCsvPath, { force: true });
+    fs.rmSync(savedPath, { force: true });
 })
-
-function buildValueKey(name: string, className: string): string {
-    return `${name} - ${className}`;
-}
