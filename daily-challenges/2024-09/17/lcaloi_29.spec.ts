@@ -47,7 +47,9 @@ test('Solution 17/09/2024', async ({ page }) => {
     await expectItemInCart(prod3Info, page);
 
     const totalPrice: number = (prod1Info.price * prod1Info.quantity) + (prod2Info.price * prod2Info.quantity) + (prod3Info.price * prod3Info.quantity);
-    expect(Number((await page.locator('td.total-price').innerText()).replace('$', 'totalPrice')));
+    const totalPriceActual: number = Number((await page.locator('td.total-price').innerText()).replace('$', '').replace('totalPrice', ''));
+
+    expect(totalPriceActual).toBe(totalPrice);
 });
 
 async function addProdToCart(productId: number, quantity = 1, page: Page) {
