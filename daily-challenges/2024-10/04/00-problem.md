@@ -1,6 +1,6 @@
 # Playwright
 ## Đề bài:
-Playwright cung cấp hàm configure cho expect để cấu hình riêng cho từng test.
+Playwright cung cấp hàm configure cho expect để cấu hình riêng cho từng test. (https://playwright.dev/docs/test-assertions#expectconfigure)
 
 ### Yêu cầu:
 Viết test thực hiện các yêu cầu sau:
