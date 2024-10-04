@@ -30,18 +30,18 @@ removeProduct("Ổi");
 console.log("Tổng giá trị sau khi xoá:", calculateTotal());
 
 // Playwright
-import {expect, test} from '@playwright/test';
-test('Day 19', async({page})=>{
+import { expect, test } from '@playwright/test';
+test('Day 19', async ({ page }) => {
     await page.goto('https://material.playwrightvn.com/');
     await page.locator('[href|="05"]').click();
-    let items = await page.locator('.puzzle-container').locator('div').count();   
+    let items = await page.locator('.puzzle-container').locator('div').count();
     page.on('dialog', async dialog => {
         expect(dialog.message()).toBe("Congratulations! You completed the puzzle.");
-        await dialog.dismiss(); 
-      }); 
-    for (let i=1;i<=items;i++) {
+        await dialog.dismiss();
+    });
+    for (let i = 1; i <= items; i++) {
         const source = page.locator('.puzzle-container').locator(`#piece-${i}`);
-        const target = page.locator('.dropzones-container').locator('.dropzone').nth(i-1) ;
+        const target = page.locator('.dropzones-container').locator('.dropzone').nth(i - 1);
         await source.dragTo(target);
     }
 });
