@@ -1,8 +1,8 @@
-//Javascript
 import { test, expect, Page } from "@playwright/test";
 
+//Javascript
 function isPrime(number: number) {
-    if (number > 2 && number % 2 === 0 || number <= 1) {
+    if ((number > 2 && number % 2 === 0) || number <= 1) {
         return false;
     } else {
         let squareRoot: number = Math.round(Math.sqrt(number));
@@ -51,19 +51,19 @@ test('Solution 17/09/2024', async ({ page }) => {
 });
 
 async function addProdToCart(productId: number, quantity = 1, page: Page) {
-    const btn_add_to_cart: string = `//button[@data-product-id="${productId}"]`;
+    const btnAddToCart: string = `//button[@data-product-id="${productId}"]`;
     for (let i = 1; i <= quantity; i++) {
-        await page.locator(btn_add_to_cart).click();
+        await page.locator(btnAddToCart).click();
     }
 };
 
 async function expectItemInCart(prodInfo: ProdInfo, page: Page) {
     const items = await page.locator('#cart-items tr').all();
     for (let item of items) {
-        const item_info = item.locator('css= td');
-        if (await item_info.nth(0).innerText() === prodInfo.name) {
-            expect.soft((Number((await item_info.nth(1).innerText()).replace('$', '')))).toBe(prodInfo.price);
-            expect.soft(Number(await item_info.nth(2).innerText())).toBe(prodInfo.quantity);
+        const itemInfo = item.locator('css= td');
+        if (await itemInfo.nth(0).innerText() === prodInfo.name) {
+            expect.soft((Number((await itemInfo.nth(1).innerText()).replace('$', '')))).toBe(prodInfo.price);
+            expect.soft(Number(await itemInfo.nth(2).innerText())).toBe(prodInfo.quantity);
             break;
         }
     }
@@ -72,9 +72,9 @@ async function expectItemInCart(prodInfo: ProdInfo, page: Page) {
 
 
 async function getProdInfo(productId: number, page: Page): Promise<ProdInfo> {
-    const txt_info: string = `//button[@data-product-id="${productId}"]/..`;
-    const name: string = await page.locator(txt_info).locator('xpath=/div[@class="product-name"]').innerText();
-    const price: number = Number(((await page.locator(txt_info).locator('xpath=/div[@class="product-price"]').innerText()).replace('$', '')));
+    const txtInfo: string = `//button[@data-product-id="${productId}"]/..`;
+    const name: string = await page.locator(txtInfo).locator('xpath=/div[@class="product-name"]').innerText();
+    const price: number = Number(((await page.locator(txtInfo).locator('xpath=/div[@class="product-price"]').innerText()).replace('$', '')));
     return { name, price };
 };
 
