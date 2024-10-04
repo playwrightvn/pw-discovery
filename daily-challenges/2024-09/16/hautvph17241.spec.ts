@@ -1,4 +1,4 @@
-import { test, expect, errors } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 
 const user = {
   name: "Hautvph17241",
