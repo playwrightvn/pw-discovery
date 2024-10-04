@@ -1,5 +1,6 @@
-//Javascript
 import { test, expect, Page } from "@playwright/test";
+
+//Javascript
 function calculateAge(input: number) {
     const currentYear: number = new Date().getFullYear();
     if (input > currentYear) {
@@ -7,6 +8,7 @@ function calculateAge(input: number) {
     }
     console.log(`Tuổi của bạn là: ${currentYear - input}`);
 }
+
 calculateAge(1990);
 
 //Playwright
@@ -20,11 +22,7 @@ test('Solution 18/09/2024', async ({ page }) => {
         dialog.accept('Xin chào, đây là bài thực hành ngày 18 tháng 9 - phiên bản đã chỉnh sửa')
     });
     await page.locator('//button[@onclick="editTask(0)"]').click();
-    // await page.waitForTimeout(3000);
     await expect(page.locator('//ul[@id="task-list"]/li/span')).toHaveText('Xin chào, đây là bài thực hành ngày 18 tháng 9 - phiên bản đã chỉnh sửa');
-
     await page.getByRole('button', { name: 'Delete' }).click();
-
     await expect(page.locator(`//ul[@id="task-list"]/li`)).toHaveCount(0)
-
 });
