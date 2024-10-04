@@ -9,7 +9,7 @@ function reverseString(originalString:string){
 }
 console.log(reverseString('hello'));
 
-//Playwright
+// Playwright
 import { expect, test } from '@playwright/test';
 const testData = {
     userName: "thaoha",
@@ -27,37 +27,25 @@ test('Day 16', async ({ page }) => {
     await page.goto('https://material.playwrightvn.com/');
 
     await page.locator('[href|="01"]').click();
-
     const textName = await page.locator('#username');
     await textName.clear();
     await textName.fill(testData.userName);
-
     const txtemail = await page.locator('#email');
     await txtemail.clear();
     await txtemail.fill(testData.email);
-
     await page.locator('#female').click();
-
     await page.locator('[for="reading"]').click();
-
     await page.selectOption('#interests', testData.interests);
-
     await page.selectOption('#country', testData.country);
-
     await page.locator("#dob").fill(testData.dateOfBirth);
-
     await page.locator("#bio").fill(testData.biography);
-
     await page.locator("#rating").fill(testData.rateUs);
-
     await page.locator("#favcolor").fill(testData.favColor);
-
     await page.locator('[type="submit"]').click();
 
     await expect(page.locator("//tbody//tr")).toHaveCount(1);
     await expect(page.locator("//tbody//td").nth(1)).toHaveText(testData.userName);
     await expect(page.locator("//tbody//td").nth(2)).toHaveText(testData.email);
-
     await expect(page.locator("//tbody//td").nth(3)).toContainText(`Gender: female`);
     await expect(page.locator("//tbody//td").nth(3)).toContainText(`Hobbies: reading`);
     await expect(page.locator("//tbody//td").nth(3)).toContainText(`Country: ${testData.country.toLowerCase()}`);
@@ -67,4 +55,4 @@ test('Day 16', async ({ page }) => {
     await expect(page.locator("//tbody//td").nth(3)).toContainText(`Favorite Color: ${testData.favColor}`);
     // DEBUG PURPOSE ONLY
     await page.waitForTimeout(10* 1000);
-})
+});
