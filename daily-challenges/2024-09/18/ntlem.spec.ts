@@ -3,8 +3,6 @@ let today = new Date();
 const currentYear = today.getFullYear();
 
 function calculateAge(yearBirth) {
-
-
     if (yearBirth > currentYear || yearBirth < 0) {
         return `Năm sinh không hợp lệ`;
     }
