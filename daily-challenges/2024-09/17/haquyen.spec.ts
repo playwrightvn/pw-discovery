@@ -11,8 +11,6 @@ function isPrime(num: number): boolean {
   return true;
 }
 
-export default isPrime;
-
 test("Challenge 17", async ({ page }) => {
   const products = [
     {

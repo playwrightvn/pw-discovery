@@ -1,6 +1,9 @@
 import { test, expect } from "@playwright/test";
 
 function calculateBMI(height: number, weight: number): void {
+  if (height <= 0 || weight <= 0) {
+    throw new Error("Height and weight must be positive numbers");
+  }
   const BMI = weight / (height * height);
   let bodyType: string;
 
@@ -27,7 +30,7 @@ test("Challenge 14", async ({ page }) => {
     )
     .click();
   await page.locator("#username").fill(username);
-  await page.locator("#email']").fill(email);
+  await page.locator("#email").fill(email);
   await page.getByRole("button", { name: "Register" }).click();
   await expect(page.locator("//*[@id='userTable']/tbody/tr")).toHaveCount(1);
   await expect(page.getByRole("row", { name: username })).toBeVisible();

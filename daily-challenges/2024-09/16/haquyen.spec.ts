@@ -9,7 +9,7 @@ test("Challenge 16", async ({ page }) => {
     username: "testing123",
     email: "testing123@gmail.com",
     gender: "Female",
-    interests: ["Technology"],
+    interests: "Technology",
     country: "Australia",
     biography: "ahihihih",
     rateUs: "10",
@@ -28,6 +28,7 @@ test("Challenge 16", async ({ page }) => {
     await page.locator("#username").fill(data.username);
     await page.locator("#email").fill(data.email);
     await page.getByLabel(data.gender).check();
+    await page.locator("#interests").selectOption(data.interests);
     await page.locator("#traveling").check();
     await page.getByLabel("Country").selectOption(data.country);
     await page.getByLabel("Biography").fill(data.biography);
