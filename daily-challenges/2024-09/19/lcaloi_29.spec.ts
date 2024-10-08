@@ -25,9 +25,7 @@ const productList: ProductList = {
         this.data = this.data.filter(product => product.name !== name);
     },
     calculateTotal() {
-        let total = 0;
-        this.data.forEach(item => total += item.price);
-        return total;
+        return this.data.reduce((total, item) => total + item.price, 0);
     },
 }
 
