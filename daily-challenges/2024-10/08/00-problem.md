@@ -1,7 +1,7 @@
 # Javascript
 
 ## Đề bài:
-Tết Nguyên Đán là một dịp Tết cổ truyền, quan trọng đối với người Việt.
+Tết Nguyên Đán là một dịp Tết cổ truyền, quan trọng đối với người Việt. Ngày Tết Nguyên Đán của năm 2025 là ngày 29 tháng 1 năm 2025
 
 ### Yêu cầu:
 - Viết một hàm Javascript có tên là `tinhNgayDenTet`, trả về số ngày, giờ, phút, giây đến Tết nguyên đán 2025.
