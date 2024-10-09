@@ -10,10 +10,10 @@ const mySentence = "Xin chào, tôi là lập trình viên.";
 const counts = countWords(mySentence);
 console.log(`Số từ: ${counts}`);
 
-const mySentence_2 = "JavaScript rất thú vị!";
-const counts_2 = countWords(mySentence_2);
-console.log(`Số từ: ${counts_2}`);
+const mySentence2 = "JavaScript rất thú vị!";
+const counts2 = countWords(mySentence2);
+console.log(`Số từ: ${counts2}`);
 
-const mySentence_3 = "      ";
-const counts_3 = countWords(mySentence_3);
-console.log(`Số từ: ${counts_3}`);
+const mySentence3 = "      ";
+const counts3 = countWords(mySentence3);
+console.log(`Số từ: ${counts3}`);
