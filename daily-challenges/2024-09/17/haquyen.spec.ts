@@ -70,6 +70,7 @@ test("Challenge 17", async ({ page }) => {
       `${products[2].quantity}`
     );
   });
+
   await test.step("Verify the total price is correct", async () => {
     let cart: number = 0;
     for (let i = 0; i < products.length; i++) {

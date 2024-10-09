@@ -16,7 +16,7 @@ function calculateBMI(height: number, weight: number): void {
   } else {
     bodyType = "Béo phì";
   }
-  console.log(`- PKết quả BMI: ${BMI.toFixed(1)}`);
+  console.log(`- Kết quả BMI: ${BMI.toFixed(1)}`);
   console.log(`- Phân loại: ${bodyType}`);
 }
 
