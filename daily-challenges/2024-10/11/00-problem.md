@@ -46,4 +46,4 @@ calculateCompoundInterest(2000, 3.5, 60);
 
 
 ## Nâng cao
-- Viết code sao cho mỗi giây sẽ in ra kết quả một lần.
+- Nhập vào số lần cộng gộp hàng năm (`n`) nếu muốn tính lãi theo kỳ khác (ví dụ: hàng tháng `n = 12`, hàng quý `n = 4`).
