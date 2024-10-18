@@ -7,10 +7,6 @@ test('Verify time', async ({ page }) => {
 
   await page.clock.setFixedTime(FIXED_TIME);
   await page.goto(PAGE_URL);
-
   const timeLocator = page.locator('span#localTime');
-  await expect(timeLocator).toBeVisible();
-
-  const timeDisplay = await timeLocator.textContent();
-  await expect(timeDisplay).toContain(EXPECTED_TIME);
+  await expect(timeLocator).toContainText(EXPECTED_TIME);
 })
