@@ -14,7 +14,7 @@ abstract class Base {
     this._url = url;
   }
 
-  async setPageAsync (page: Page): Promise<void> {
+  setPage (page: Page): void{
     this._page = page;
   }
 
@@ -51,9 +51,9 @@ class HomePage extends Base {
   private readonly _submitBuyTicketBtnLocator: string = 'button.btn-confirm';
 
   async buyTicketAsync (ticketName: string, quantity: number): Promise<string> {
-    const category: Locator = await this._page.locator(`.ticket-category:has([data-ticket-name="${ticketName}"])`);
-    const categoryPrice: string = await category.locator('.price').innerText();
-    await category.locator('button.btn-book-ticket').click();
+    const categoryLocator: Locator = this._page.locator(`.ticket-category:has([data-ticket-name="${ticketName}"])`);
+    const categoryPrice: string = await categoryLocator.locator('.price').innerText();
+    await categoryLocator.locator('button.btn-book-ticket').click();
 
     await this._page.locator(this._ticketQuantityInputLocator).fill(quantity.toString());
     await this._page.locator(this._submitBuyTicketBtnLocator).click();
@@ -120,7 +120,7 @@ test.describe("Buy Ticket", () => {
     await homePage.verifyCartQuantityAsync(BUY_QUANTITY);
 
     const newTab = await context.newPage();
-    await cartPage.setPageAsync(newTab);
+    cartPage.setPage(newTab);
     await cartPage.gotoAsync();
     await cartPage.verifyTotalPriceAsync(price);
     await cartPage.closeAsync();
