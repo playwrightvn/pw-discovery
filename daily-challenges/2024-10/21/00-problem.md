@@ -15,6 +15,3 @@ Viết code cho test case sau:
   - Verify giỏ hàng có 1 sản phẩm
   - Đi tới trang giỏ hàng
   - Verify tổng tiền đúng với giá đã thêm ngoài trang chủ
-
-## Kiến thức bổ sung
-- Xử lý nhiều tab (page): https://playwright.dev/docs/pages#multiple-pages
