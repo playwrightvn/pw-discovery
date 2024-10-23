@@ -32,3 +32,5 @@ Viết code cho test case sau:
         Hạng vé: Phát Tài và Tinh Tú
         Số lượng: 2
         ```
+# Kiến thức bổ sung để làm bài: authentication
+https://playwright.dev/docs/auth
