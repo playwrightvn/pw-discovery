@@ -5,53 +5,55 @@ type Product = {
     quantity: number;
 };
 
-test ('Go shopping for mom', async ({ page }) => {
-    await page.goto('https://material.playwrightvn.com/games/001-di-cho.html');
-    
-    const shoppingList: Product[] = await page.$$eval(
-        '#wishlist > tr',
-        rows => rows.map(row => {
-            const cells = row.querySelectorAll('td');
-            return {
-                name: cells[0].textContent || "",
-                quantity: Number(cells[1].textContent) || 0
-            }
-        })
-    )
+async function getShoppingList (page: any): Promise<Product[]> {
+    const shoppingList: Product[] = [];
+    const rows = await page.locator('#wishlist > tr').all();
+    for (const row of rows) {
+        const cells = await row.locator('td').allTextContents();
+        shoppingList.push({ name: cells[0], quantity: Number(cells[1]) });
+    }
+    return shoppingList;
+}
 
-    for(let i = 0; i < 4; i++) {
-        const productNames = await page.$$eval('.product-name', elements => elements.map(el => el.textContent?.trim()));
-        console.log(productNames);
-        const hashTable = new Set(productNames);
-        const remainingItems: { name: string; quantity: number }[] = [];
-        
+async function clickAddBtn (page: any, product: Product) {
+    const plusButton = await page.locator(`#cart div:has-text("${product.name} - +")`).getByRole('button').first();
+    for (let i = 0; i < product.quantity; i++) {
+        await plusButton.click();
+    }
+}
+
+async function processShopping(page: any, shoppingList: Product[]): Promise<void> {
+    for (let i = 0; i < 4 && shoppingList.length > 0; i++) {
+        const availableProductNames = await page.locator('#cart .product-name').allTextContents();
+        const availableProducts = new Set(availableProductNames);
+        const remainingItems: Product[] = [];
+
         for (const item of shoppingList) {
-            if (hashTable.has(item.name)) {
-                const plusButton = await page.locator(`#cart div:has-text("${item.name} - +")`).getByRole('button').first();
-                for (let i = 0; i < item.quantity; i++) {
-                    await plusButton.click();
-                }
+            if (availableProducts.has(item.name)) {
+                await clickAddBtn(page, item);
             } else {
-                // sau khi check, lưu những product chưa được shopping vào mảng tạm
                 remainingItems.push(item);
             }
         }
-        if (remainingItems.length === 0) {
-            break;
+
+        shoppingList = remainingItems;
+
+        if (shoppingList.length > 0) {
+            await page.locator('button:has-text("Trang sau")').click();
         }
-        shoppingList.length = 0; 
-        shoppingList.push(...remainingItems);
-
-        await page.locator('button:has-text("Trang sau")').click();
     }
+}
 
-    const checkResultsButton = page.locator('button.check-result', { hasText: 'Kiểm tra kết quả' });
-    await checkResultsButton.click();
+test ('Go shopping for mom', async ({ page }) => {
+    await page.goto('https://material.playwrightvn.com/games/001-di-cho.html');
+
+    let shoppingList = await getShoppingList(page);
+    await processShopping(page, shoppingList);
+    await page.locator('button.check-result', { hasText: 'Kiểm tra kết quả' }).click();
 
     page.once('dialog', async dialog => {
         expect(dialog.message()).toBe('Bạn đã đi chợ chính xác!');
         await dialog.accept();
     })
-
 });
 
