@@ -25,12 +25,12 @@ test('Solution 20/09/2024', async ({page}) => {
 
     await clickArea.click();
     await expect(txtClickCount).toHaveText('Số lần nhấn: 1');
-    await expect(txtClickType).toHaveText('Loại nhấn: Đúp');
+    await expect(txtClickType).toHaveText('Loại nhấn: Đơn');
     await expect(txtModifierKeys).toHaveText('Phím kèm theo: Không có');
 
     await clickArea.dblclick();
     await expect(txtClickCount).toHaveText('Số lần nhấn: 3');
-    await expect(txtClickType).toHaveText('Loại nhấn: Đơn');
+    await expect(txtClickType).toHaveText('Loại nhấn: Đúp');
     await expect(txtModifierKeys).toHaveText('Phím kèm theo: Không có');
 
     await clickArea.click({modifiers: ['Shift']});
