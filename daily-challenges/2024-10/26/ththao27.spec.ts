@@ -17,9 +17,7 @@ async function getShoppingList (page: any): Promise<Product[]> {
 
 async function clickAddBtn (page: any, product: Product) {
     const plusButton = await page.locator(`#cart div:has-text("${product.name} - +")`).getByRole('button').first();
-    for (let i = 0; i < product.quantity; i++) {
-        await plusButton.click();
-    }
+    await plusButton.click({ clickCount: product.quantity});
 }
 
 async function processShopping(page: any, shoppingList: Product[]): Promise<void> {
@@ -44,16 +42,16 @@ async function processShopping(page: any, shoppingList: Product[]): Promise<void
     }
 }
 
-test ('Go shopping for mom', async ({ page }) => {
+test('Go shopping for mom', async ({ page }) => {
+
     await page.goto('https://material.playwrightvn.com/games/001-di-cho.html');
 
     let shoppingList = await getShoppingList(page);
     await processShopping(page, shoppingList);
-    await page.locator('button.check-result', { hasText: 'Kiểm tra kết quả' }).click();
 
+    await page.locator('button.check-result', { hasText: 'Kiểm tra kết quả' }).click();
     page.once('dialog', async dialog => {
         expect(dialog.message()).toBe('Bạn đã đi chợ chính xác!');
         await dialog.accept();
-    })
+    });
 });
-
