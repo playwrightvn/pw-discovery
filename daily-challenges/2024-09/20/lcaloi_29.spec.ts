@@ -1,26 +1,22 @@
 //Javascript
-import { test, expect, Locator } from "@playwright/test";
+import {test, expect, Locator} from "@playwright/test";
 
 function findLargestNumber(input: number[]): string {
     if (input.length === 0) {
-        return 'This array is null';
+        return 'This array is empty';
     }
 
-    let largestNumber = input[0];
-    for (let element of input) {
-        if (element > largestNumber) {
-            largestNumber = element;
-        }
-    }
+    const largestNumber: number = Math.max(...input);
     return `The largest number is: ${largestNumber}`;
 }
+
 const arr: number[] = [-1, 39, 84, 5, 7, 3, 7, 8, 8, 9, 4, 3, 2, 90, 6, 3]
 console.log(findLargestNumber(arr))
 
 //Playwright
-test('Solution 20/09/2024', async ({ page }) => {
+test('Solution 20/09/2024', async ({page}) => {
     await page.goto('https://material.playwrightvn.com/');
-    await page.getByRole("link", { name: /mouse event/ }).click();
+    await page.getByRole("link", {name: /mouse event/}).click();
 
     const clickArea: Locator = page.locator('//div[@id="clickArea"]');
     const txtClickCount: Locator = page.locator('//p[@id="clickCount"]');
@@ -37,7 +33,7 @@ test('Solution 20/09/2024', async ({ page }) => {
     await expect(txtClickType).toHaveText('Loại nhấn: Đơn');
     await expect(txtModifierKeys).toHaveText('Phím kèm theo: Không có');
 
-    await clickArea.click({ modifiers: ['Shift'] });
+    await clickArea.click({modifiers: ['Shift']});
     await expect(txtClickCount).toHaveText('Số lần nhấn: 4');
     await expect(txtClickType).toHaveText('Loại nhấn: Đơn');
     await expect(txtModifierKeys).toHaveText('Phím kèm theo: Shift');

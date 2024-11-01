@@ -1,11 +1,6 @@
 function countWords(input: string): string {
-    const words: string[] = input.split(' ');
-    let count = 0;
-    for (let element of words) {
-        if (element) {
-            count++;
-        }
-    }
+    const words:string[] = input.trim().split(/\s+/).filter(word => word.length > 0);
+    const count:number = words.length;
     return `Số từ: ${count}`
 }
 const input: string = 'JavaScript rất thú vị!'
