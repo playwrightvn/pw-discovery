@@ -22,10 +22,10 @@ test('Solution 20/09/2024', async ({ page }) => {
     await page.goto('https://material.playwrightvn.com/');
     await page.getByRole("link", { name: /mouse event/ }).click();
 
-    const clickArea: Locator = page.locator('//div[@id="clickArea"');
-    const txtClickCount: Locator = page.locator('//p[@id="clickCount"');
-    const txtClickType: Locator = page.locator('//p[@id="clickType"');
-    const txtModifierKeys: Locator = page.locator('//p[@id="modifierKeys"')
+    const clickArea: Locator = page.locator('//div[@id="clickArea"]');
+    const txtClickCount: Locator = page.locator('//p[@id="clickCount"]');
+    const txtClickType: Locator = page.locator('//p[@id="clickType"]');
+    const txtModifierKeys: Locator = page.locator('//p[@id="modifierKeys"]')
 
     await clickArea.click();
     await expect(txtClickCount).toHaveText('Số lần nhấn: 1');
