@@ -1,5 +1,8 @@
 function convertNotes(notes: string[]): string[] {
-    const a: { [key: string]: string } = {
+    if (!Array.isArray(notes)) {
+        throw new Error('Input must be an array');
+    }
+    const noteMap: { [key: string]: string } = {
         "đô": "C",
         "rê": "D",
         "mi": "E",
@@ -9,7 +12,7 @@ function convertNotes(notes: string[]): string[] {
         "si": "B"
     };
 
-    return notes.map(note => a[note] || note);
+    return notes.map(note => noteMap[note.toLowerCase()] || note);
 }
 
 const vietnameseNotes = ["Đô", "rê", "mi", "fa", "sol", "la", "si"];
