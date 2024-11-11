@@ -1,6 +1,6 @@
-import {expect, Page, test} from "@playwright/test";
+import { expect, Page, test } from "@playwright/test";
 
-function getCurrentDate() : string {
+function getCurrentDate(): string {
     const d = new Date();
     let dd: string | number = d.getDate();
     let mm: number | string = d.getMonth() + 1;
@@ -11,13 +11,13 @@ function getCurrentDate() : string {
     return `Ngày hiện tại là: ${dd}/${mm}/${yyyy}`;
 }
 
-const currentDate:string =getCurrentDate();
+const currentDate: string = getCurrentDate();
 console.log(currentDate);
 
 //Playwright
-test("Solution 24/09/2024", async ({ page } : {page:Page}) => {
+test("Solution 24/09/2024", async ({ page }: { page: Page }) => {
     await page.route('*/**/api/v1/fruits', async route => {
-        const jsonBody:{name:string, id:number}[] =
+        const jsonBody: { name: string, id: number }[] =
             [
                 { name: 'Cam', id: 1 },
                 { name: 'Táo', id: 2 },

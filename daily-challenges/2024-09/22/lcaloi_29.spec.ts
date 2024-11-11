@@ -1,7 +1,7 @@
 function countWords(input: string): string {
-    const words:string[] = input.trim().split(/\s+/).filter(word => word.length > 0);
-    const count:number = words.length;
+    const words: string[] = input.trim().split(/\s+/).filter(word => word.length > 0);
+    const count: number = words.length;
     return `Số từ: ${count}`
 }
-const input: string = 'JavaScript rất thú vị!'
-console.log(countWords(input));
+const text: string = 'JavaScript rất thú vị!'
+console.log(countWords(text));

@@ -56,4 +56,3 @@ test('Solution 23/09/2024', async ({ request }) => {
     });
     expect(deleteResponse.status()).toBe(204);
 });
-

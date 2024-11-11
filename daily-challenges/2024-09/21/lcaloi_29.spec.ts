@@ -1,6 +1,6 @@
 //Javascript
 function replaceEmail(input: string): string { // Regular expression
-    if(input === null || input === undefined) {
+    if (input === null || input === undefined) {
         throw new Error('Input cannot be null or undefined');
     }
     const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
