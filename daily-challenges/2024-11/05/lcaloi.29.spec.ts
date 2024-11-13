@@ -36,6 +36,6 @@ function calculateTreasureAdvance(sequences: string[]): number[] {
     return sequences.map((item) => sumTotal(item));
 }
 
-console.log(calculateTreasureAdvance(["1...5", "2...62", "10...12"]));
-console.log(calculateTreasureAdvance(["1...1", "3...1", "1...10"]));
-console.log(calculateTreasureAdvance(["5...10", "20...22", "1.5"]));
+console.log(calculateTreasure(["1...5", "2...6", "10...12"]));
+console.log(calculateTreasure(["1...1", "1...3", "1...10"]));
+console.log(calculateTreasure(["5...10", "20...22", "1...5"]));
