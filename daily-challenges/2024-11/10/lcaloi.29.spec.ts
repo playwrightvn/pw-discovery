@@ -26,7 +26,7 @@ function analyzeSteps(dailySteps: number[], target: number = 10000): StepsAnalys
         let maxCount: number = 0;
         let currentCount: number = 0;
         input.forEach(item => {
-            currentCount = item >= target ? (currentCount + 1) : 0;
+            currentCount = (item >= target) ? (currentCount + 1) : 0;
             if (currentCount > maxCount) {
                 maxCount = currentCount;
             }
