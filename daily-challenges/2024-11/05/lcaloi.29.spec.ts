@@ -33,10 +33,10 @@ function isPositiveInteger(input: number) {
 //Advance
 //Bài1: thêm validation cho input
 function calculateTreasureAdvance(sequences: string[]): number[] {
-    sequences.map((item) => validateInput(item));
+    sequences.forEach((item) => validateInput(item));
     return sequences.map((item) => sumTotal(item));
 }
 
 console.log(calculateTreasureAdvance(["1...5", "2...62", "10...12"]));
-// console.log(calculateTreasureAdvance(["1...1", "3...1", "1...10"]));
-// console.log(calculateTreasureAdvance(["5...10", "20...22", "1.5"]));
+console.log(calculateTreasureAdvance(["1...1", "3...1", "1...10"]));
+console.log(calculateTreasureAdvance(["5...10", "20...22", "1.5"]));
