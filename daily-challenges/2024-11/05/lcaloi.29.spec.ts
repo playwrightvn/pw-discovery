@@ -7,7 +7,6 @@ function sumTotal(input: string) {
     let result: number = 0;
     let begin: number = +input.slice(0, input.indexOf('.'));
     let end: number = +input.slice(input.lastIndexOf('.') + 1);
-    console.log(end);
 
     for (begin; begin <= end; begin++) {
         result += begin;
