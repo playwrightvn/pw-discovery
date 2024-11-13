@@ -23,9 +23,9 @@ test('solution 13/11/24', async ({ page }) => {
     });
 
     const arr: string[] = [...setOuter];
-    for (let i = 0; i < arr.length; i++) {
-        let outer1 = page.locator(`//div[@id='grid']/div[text()="${arr[i]}"][1]`);
-        let outer2 = page.locator(`//div[@id='grid']/div[text()="${arr[i]}"][2]`);
+    for (const value of arr) {
+        let outer1 = page.locator(`//div[@id='grid']/div[text()="${value}"][1]`);
+        let outer2 = page.locator(`//div[@id='grid']/div[text()="${value}"][2]`);
         await outer1.click();
         await outer2.click();
         await expect.soft(outer1).toBeHidden();
