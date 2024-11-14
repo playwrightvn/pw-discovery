@@ -1,18 +1,16 @@
 import { test, expect } from '@playwright/test';
 //Javascript
 //Write function to calculate BMI
-function calculateBMI(height, weight){
+function calculateBMI(height: number, weight: number){
     const BMI = weight/(height*height);
     let bodyType = '';
     if(BMI< 18.5){
         bodyType = "Gầy";
-
     } else if(BMI >= 18.5 && BMI < 24.9) {
         bodyType = "Bình thường";
 
     } else if (BMI >=25 && BMI < 29.9){
         bodyType = "Thừa cân";
-   
     } else {
         bodyType ="Béo phì";
     }
