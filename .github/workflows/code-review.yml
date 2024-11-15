@@ -17,9 +17,13 @@ jobs:
     steps:
       - name: PR Info
         run: |
-          echo "Comment: ${{ github.event.comment.body }}"
-          echo "Issue Number: ${{ github.event.issue.number }}"
-          echo "Repository: ${{ github.repository }}"
+          echo "Comment: $COMMENT_BODY"
+          echo "Issue Number: $ISSUE_NUMBER"
+          echo "Repository: $REPOSITORY"
+        env:
+          COMMENT_BODY: ${{ github.event.comment.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          REPOSITORY: ${{ github.repository }}
 
       - name: Checkout Repo
         uses: actions/checkout@v3
