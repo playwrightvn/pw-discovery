@@ -2,7 +2,7 @@
 Trello là một ứng dụng nổi tiếng, cho phép bạn tạo và quản lý công việc theo các Kanban board.
 
 # Đề bài:
-Hãy tổ chức code để đáp ứng các yêu cầu sau:
+Có trang trello clone sau: https://material.playwrightvn.com/026-trello.html. Hãy tổ chức code để đáp ứng các yêu cầu sau:
 - Pre-condition: board có 3 cột:
     - Cần làm
     - Đang làm
