@@ -20,7 +20,6 @@ Viết code cho test case sau:
 import { test, expect } from '@playwright/test'
 let username = 'vn84'
 let pwd = 'StrongPassword@123'
-let price = '1,800,000'
 let quantity = '1'
 
 test.describe('Authentication Tests', () => {
@@ -38,7 +37,9 @@ test.describe('Authentication Tests', () => {
 
   test('2024-10-21', async ({ page }) => {
     await page.locator('//button[@data-ticket-name="Hỏa lực 1,2,3,4"]').click()
-    await page.waitForTimeout(10000)
+    const button = await page.$('button.btn-book-ticket')
+    const ticketPrice = await button.getAttribute('data-ticket-price')
+    const formattedPrice = new Intl.NumberFormat().format(ticketPrice)
     page.on('dialog', async dialog => {
         console.log(dialog.message())
         await dialog.accept()
@@ -46,9 +47,11 @@ test.describe('Authentication Tests', () => {
     await page.locator(`//input[@id="ticket-quantity"]`).fill(quantity)
     await page.getByRole("button", {name: 'Xác nhận'}).click()
     const qty = await page.locator('//span[@id="cart-count"]').innerText()
+    console.log(qty)
     expect(qty).toEqual(quantity)
     await page.locator(`//div[@id="cart-icon"]`).click()
-    expect(await page.locator(`//div[@id="total-price"]`).innerText()).toContain(price)
+    await expect(page.getByRole('heading', { name: 'Giỏ hàng của bạn' })).toBeVisible()
+    expect(await page.locator(`//div[@id="total-price"]`).innerText()).toContain(formattedPrice)
   })
 
 })
