@@ -8,6 +8,13 @@ test.describe('solution 18/11/24', () => {
         await addBoard(page, 'Đã hoàn thành');
     });
 
+    test.afterEach(async ({ page }) => {
+        for (let i = 0; i < 3; i++) {
+            await page.locator(`span.delete-list`).nth(0).click();
+        }
+        await page.close();
+    });
+
     test('Thêm công việc', async ({ page }) => {
         await page.click(`//h3[text()='Cần làm']/../following-sibling::div[@class='add-card']`);
         await page.fill(`//input[@class='card-input']`, 'Viết bài Playwright Việt Nam');
@@ -15,13 +22,6 @@ test.describe('solution 18/11/24', () => {
         await expect(page.locator(`div.card`).locator(`css=>div:nth-child(1)`)).toHaveClass('label priority-high');
         await page.locator('div.card').dragTo(page.locator(`//*[text()='Đang làm']/../following-sibling::div[@class='add-card']`));
     });
-
-    test.afterEach(async ({ page }) => {
-        for (let i = 0; i < 3; i++) {
-            await page.locator(`span.delete-list`).nth(0).click();
-        }
-        await page.close();
-    })
 });
 
 
@@ -32,4 +32,4 @@ async function addBoard(page: Page, columnName: string) {
         await page.locator('input.list-input').fill(columnName);
         await page.locator(`//button[text()='Thêm danh sách']`).click();
     }
-}
+};
