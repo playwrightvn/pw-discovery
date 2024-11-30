@@ -1,5 +1,10 @@
 import { expect, test } from '@playwright/test';
 
+
+const MESSAGE = {
+    stop(input) { return `Chúc mừng! Bạn đã tìm thấy ${input}!` },
+    continue(input) { return `Tiếp tục tìm kiếm! Đây là ${input}` },
+}
 test('solution for day 28/11/24', async ({ page }) => {
     await page.goto('https://material.playwrightvn.com/');
     await expect(page.getByText('Tài liệu học automation test')).toBeVisible();
@@ -27,12 +32,11 @@ test('solution for day 28/11/24', async ({ page }) => {
     for (const element of arrLocator) {
         await element.click();
         let pokemonName = await element.locator('div.pokemon-name').textContent();
-        let resultsMsg = await page.locator(`//div[@id='result']`).textContent();
         if (pokemonName === targetName) {
-            expect(resultsMsg).toEqual(`Chúc mừng! Bạn đã tìm thấy ${targetName}!`)
+            await expect(page.locator(`//div[@id='result']`)).toHaveText(MESSAGE.stop(targetName))
             break;
         } else {
-            expect(resultsMsg).toEqual(`Tiếp tục tìm kiếm! Đây là ${pokemonName}`)
+            await expect(page.locator(`//div[@id='result']`)).toHaveText(MESSAGE.continue(pokemonName));
         }
     }
 })
