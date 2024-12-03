@@ -54,6 +54,10 @@ function decryptionCaesar (massage: string, shift: number): string {
     return result;
 }
 
+console.log(caesarDecipher(["Khoor Zruog!", "FDHVDU"], 3));
+console.log(caesarDecipher(["GDKKN"], -1));
+console.log(caesarDecipher(["uftu"], 27));
+
 // //2. **Thêm tính năng tự động đoán shift:**
 // function breakCaesar(encodedMessage: string): number {
 //     let shift: number = 0;
@@ -63,8 +67,3 @@ function decryptionCaesar (massage: string, shift: number): string {
 //         }
 //     }
 // }
-
-
-console.log(caesarDecipher(["Khoor Zruog!", "FDHVDU"], 3));
-console.log(caesarDecipher(["GDKKN"], -1));
-console.log(caesarDecipher(["uftu"], 27));
