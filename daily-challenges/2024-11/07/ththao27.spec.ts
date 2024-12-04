@@ -1,50 +1,54 @@
-function caesarCipher (massages: string[], shift: number): string[] {
-    shift = shift % 26;
+const ASCII_UPPERCASE_A = 65;
+const ASCII_LOWERCASE_A = 97;
+const ALPHABET_SIZE = 26;
+
+function caesarCipher (message: string[], shift: number): string[] {
+    shift = shift % ALPHABET_SIZE;
     const result: string[] = [];
-    for (const item of massages) {
+    for (const item of message) {
         result.push(encryptionCaesar(item, shift));
     }
     return result;
 }
 
-function encryptionCaesar (massage: string, shift: number): string {
+function encryptionCaesar (message: string, shift: number): string {
     let result = '';
-    for (let char of massage) {
+    for (let char of message) {
         if (char >= 'A' && char <= 'Z') {
-            let newChar = String.fromCharCode((char.charCodeAt(0) - 65 + shift) % 26 + 65);
+            let newChar = String.fromCharCode((char.charCodeAt(0) - ASCII_UPPERCASE_A + shift) % ALPHABET_SIZE + ASCII_UPPERCASE_A);
             result += newChar;
         }
         else if (char >= 'a' && char <= 'z') {
-            let newChar = String.fromCharCode((char.charCodeAt(0) - 97 + shift) % 26 + 97);
+            let newChar = String.fromCharCode((char.charCodeAt(0) - ASCII_LOWERCASE_A + shift) % ALPHABET_SIZE + ASCII_LOWERCASE_A);
             result += newChar;
         }
         else {
             result += char;
-          }
+        }
     }
     return result;
 }
 
 //1. **Thêm chức năng giải mã:**
 
-function caesarDecipher (massages: string[], shift: number): string[] {
-    shift = shift % 26;
+function caesarDecipher (message: string[], shift: number): string[] {
+    shift = shift % ALPHABET_SIZE;
     const result: string[] = [];
-    for (const item of massages) {
+    for (const item of message) {
         result.push(decryptionCaesar(item, shift));
     }
     return result;
 }
 
-function decryptionCaesar (massage: string, shift: number): string {
+function decryptionCaesar (message: string, shift: number): string {
     let result = '';
-    for (let char of massage) {
+    for (let char of message) {
         if (char >= 'A' && char <= 'Z') {
-            let newChar = String.fromCharCode((char.charCodeAt(0) - 65 - shift) % 26 + 65);
+            let newChar = String.fromCharCode((char.charCodeAt(0) - ASCII_UPPERCASE_A - shift) % ALPHABET_SIZE + ASCII_UPPERCASE_A);
             result += newChar;
         }
         else if (char >= 'a' && char <= 'z') {
-            let newChar = String.fromCharCode((char.charCodeAt(0) - 97 - shift) % 26 + 97);
+            let newChar = String.fromCharCode((char.charCodeAt(0) - ASCII_LOWERCASE_A - shift) % ALPHABET_SIZE + ASCII_LOWERCASE_A);
             result += newChar;
         }
         else {
@@ -57,13 +61,3 @@ function decryptionCaesar (massage: string, shift: number): string {
 console.log(caesarDecipher(["Khoor Zruog!", "FDHVDU"], 3));
 console.log(caesarDecipher(["GDKKN"], -1));
 console.log(caesarDecipher(["uftu"], 27));
-
-// //2. **Thêm tính năng tự động đoán shift:**
-// function breakCaesar(encodedMessage: string): number {
-//     let shift: number = 0;
-//     for (let char of encodedMessage) {
-//         if (char >= 'A' && char <= 'Z') {
-
-//         }
-//     }
-// }
