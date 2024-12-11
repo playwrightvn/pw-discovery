@@ -1,8 +1,6 @@
 # Typescript challenge: MÁY ĐỔI XU
 ## Giới thiệu
-```
 Đổi tiền là một bài toán cổ điển trong khoa học máy tính. Ở Việt Nam, các máy bán hàng tự động cần đổi tiền thối thường gặp khó khăn vì phải tối ưu số lượng xu/tiền thối lại. Bạn hãy giúp lập trình một máy đổi tiền thông minh!
-```
 
 ## Yêu cầu
 - Viết hàm `doiTien(soTien)` nhận vào số tiền cần đổi (đơn vị: đồng)

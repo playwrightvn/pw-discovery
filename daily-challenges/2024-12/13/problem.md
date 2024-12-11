@@ -1,9 +1,7 @@
 # Typescript challenge: THU HOẠCH NÔNG TRẠI
 
 ## Giới thiệu
-```
 Game nông trại luôn là một thể loại game phổ biến. Một trong những tính năng quan trọng là tính toán thời gian thu hoạch và sản lượng. Bạn hãy xây dựng hệ thống quản lý thu hoạch cho nông trại!
-```
 
 ## Yêu cầu
 - Viết class `CayTrong` với các thuộc tính:

@@ -1,9 +1,7 @@
 # Typescript challenge: XẾP HÀNG MUA VÉ
 
 ## Giới thiệu
-```
 Tại các rạp chiếu phim, việc tính toán thời gian chờ đợi để mua vé là rất quan trọng. Điều này giúp khách hàng ước lượng được thời gian và nhà rạp có thể tối ưu số lượng quầy vé. Hãy giúp xây dựng hệ thống tính toán này!
-```
 
 ## Yêu cầu
 - Viết hàm `tinhThoiGianCho(danhSachKhach)` 
