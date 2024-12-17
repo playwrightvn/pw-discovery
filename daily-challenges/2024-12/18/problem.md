@@ -1,65 +1,50 @@
-# Typescript challenge: THỢ PHA CHẾ
+# 🧩 **TypeScript Challenge: Chuyển đổi số tiền sang chữ**
 
-## Giới thiệu
-Một quán cà phê cần phần mềm để quản lý công thức pha chế và kiểm tra khả năng pha chế dựa trên nguyên liệu hiện có. Bạn hãy giúp họ xây dựng hệ thống này!
+---
 
-## Yêu cầu
-- Tạo interface cho nguyên liệu và công thức:
-  ```typescript
-  interface NguyenLieu {
-    ten: string;
-    donVi: "ml" | "g" | "muong";
-    soLuong: number;
-  }
+## **Giới thiệu:**
 
-  interface CongThuc {
-    ten: string;
-    nguyenLieu: NguyenLieu[];
-    cachLam: string[];
-    doKho: 1 | 2 | 3;  // độ khó pha chế
-  }
-  ```
+Khi bạn thực hiện chuyển khoản trên các ứng dụng ngân hàng số, chắc hẳn bạn đã thấy một tính năng thú vị: khi nhập số tiền cần chuyển, phía dưới ô nhập liệu sẽ xuất hiện một dòng chữ thể hiện số tiền đó bằng chữ. Ví dụ, khi bạn nhập **1,234,000**, ứng dụng sẽ hiển thị **"một triệu hai trăm ba mươi tư nghìn đồng"**. Tính năng này giúp người dùng dễ dàng xác nhận lại số tiền và tránh những sai sót không đáng có.
 
-- Viết class `QuanLyDoUong` với các phương thức:
-  + `kiemTraKhaNangPhaChe(congThuc: CongThuc)`: Kiểm tra có thể pha được không
-  + `thongKeNguyenLieuThieu(congThuc: CongThuc)`: Liệt kê nguyên liệu còn thiếu
-  + `phaChe(congThuc: CongThuc)`: Thực hiện pha chế (trừ nguyên liệu)
-  + `themNguyenLieu(nguyenLieu: NguyenLieu)`: Bổ sung nguyên liệu
-  + `layDanhSachCoThePha()`: Lấy danh sách đồ uống có thể pha chế
+Trong thử thách ngày hôm nay, chúng ta sẽ cùng nhau xây dựng một hàm TypeScript để chuyển đổi số tiền thành dạng chữ tương tự như tính năng trên các ứng dụng ngân hàng.
 
-## Test cases
+Bạn đã sẵn sàng chưa? Hãy cùng bắt đầu! 🚀
+
+---
+
+## **Yêu cầu:**
+
+- **Tên hàm:** `convertNumberToWords`
+- **Tham số:**
+  - Nhận vào một số nguyên dương (number) trong khoảng từ **0 đến 999,999,999**.
+- **Kết quả:**
+  - Trả về một chuỗi là cách đọc bằng chữ của số tiền và kết thúc bằng từ **"đồng"**.
+- **Quy tắc đọc số:**
+  - Số tiền được đọc theo cách truyền thống của tiếng Việt:
+    - `1234` → **"một nghìn hai trăm ba mươi bốn đồng"**
+    - `1001` → **"một nghìn không trăm lẻ một đồng"**
+    - `500000` → **"năm trăm nghìn đồng"**
+    - `145000` → **"một trăm bốn mươi lăm nghìn đồng"**
+  - Sử dụng dấu cách để ngăn cách các từ.
+  - Không thêm từ thừa như **"không"** ở đầu nếu không cần thiết.
+
+---
+
+## **Ví dụ:**
+
 ```typescript
-const kho = new QuanLyDoUong({
-  nguyenLieu: [
-    { ten: "Cà phê", donVi: "g", soLuong: 100 },
-    { ten: "Sữa", donVi: "ml", soLuong: 500 },
-    { ten: "Đường", donVi: "g", soLuong: 200 }
-  ]
-});
+function convertNumberToWords(number: number): string {
+  // Viết code của bạn ở đây
+}
 
-const latteCongThuc: CongThuc = {
-  ten: "Latte",
-  nguyenLieu: [
-    { ten: "Cà phê", donVi: "g", soLuong: 18 },
-    { ten: "Sữa", donVi: "ml", soLuong: 200 },
-    { ten: "Đường", donVi: "g", soLuong: 10 }
-  ],
-  cachLam: [
-    "Pha cà phê espresso",
-    "Đánh sữa nóng",
-    "Rót sữa từ từ vào cà phê"
-  ],
-  doKho: 2
-};
+console.log(convertNumberToWords(1234)); 
+// Kết quả: "một nghìn hai trăm ba mươi bốn đồng"
 
-console.log(kho.kiemTraKhaNangPhaChe(latteCongThuc));
-// Output: true
+console.log(convertNumberToWords(1001)); 
+// Kết quả: "một nghìn không trăm lẻ một đồng"
 
-kho.phaChe(latteCongThuc);
-console.log(kho.layDanhSachNguyenLieu());
-// Output: [
-//   { ten: "Cà phê", donVi: "g", soLuong: 82 },
-//   { ten: "Sữa", donVi: "ml", soLuong: 300 },
-//   { ten: "Đường", donVi: "g", soLuong: 190 }
-// ]
-```
+console.log(convertNumberToWords(500000)); 
+// Kết quả: "năm trăm nghìn đồng"
+
+console.log(convertNumberToWords(0));
+// Kết quả: "không đồng"
