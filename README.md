@@ -18,7 +18,7 @@ npm install
     - Tên file sẽ theo format: `${username_github}.spec.ts`. Ví dụ, username của bạn là `minhphong306`, hãy tạo file `minhphong306.spec.ts` vào trong folder chứa bài toán.
 3. Tạo pull request và gửi lại vào post để được hỗ trợ review.
 
-Xem thêm hướng dẫn bằng video ở đây: [Link Youtube]()
+Xem thêm hướng dẫn bằng video ở đây: [Link Youtube](https://www.youtube.com/watch?v=MPDCekrpeHM&list=PLM5yUS9s0VYBRlbFSo_urVNn6jQmqcsW0&ab_channel=PlaywrightVi%E1%BB%87tNam)
 
 # 🧑‍💻 Đóng Góp
 - Chúng tôi luôn chào đón các đóng góp từ cộng đồng! Hãy tạo một fork của dự án, thực hiện thay đổi và gửi pull request cho chúng tôi.
