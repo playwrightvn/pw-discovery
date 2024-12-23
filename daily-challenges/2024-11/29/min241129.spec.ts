@@ -25,16 +25,15 @@ test('Decoration', async ({ page }) => {
         name = name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ')
         mission.push({ name: name, quantity: Number(qty) })
     }
-    console.log(mission)
+    page.once('dialog', async dialog => {
+        const expectedMessage = 'Chúc mừng! Bạn đã hoàn thành xuất sắc!'
+        expect(dialog.message()).toBe(expectedMessage)
+        await dialog.accept()
+    })
     for (const item of mission) {
         const element = await page.locator(`//button[text()="Thêm ${item.name}"]`)
         if (await element.count() > 0) {
             await page.locator(`//button[text()="Thêm ${item.name}"]`).click({ clickCount: item.quantity})
         }
     }
-    page.once('dialog', async dialog => {
-        const expectedMessage = 'Chúc mừng! Bạn đã hoàn thành xuất sắc!'
-        expect(dialog.message()).toBe(expectedMessage)
-        await dialog.accept()
-    })
 })
