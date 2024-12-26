@@ -25,9 +25,9 @@ class CayTrong {
             this.thoiGianThuHoach = new Date(now);
             this.thoiGianThuHoach.setHours(now.getHours() + this.thoiGianTrong);
             console.log(`Bat dau trong cay: ${convertTimeToString(this.thoiGianBatDau)}. Ban co the thu hoach sau ${this.thoiGianTrong}h nua`);
-            return;
+        } else {
+            console.log(`Cay da duoc trong vao luc ${convertTimeToString(this.thoiGianBatDau)}`);
         }
-        console.log(`Cay da duoc trong vao luc ${convertTimeToString(this.thoiGianBatDau)}`);
     }
 
     kiemTraTrangThai(): string {
@@ -40,9 +40,12 @@ class CayTrong {
         }
 
         if (this.thoiGianBatDau.getTime() >= this.thoiGianThuHoach.getTime()) {
-            return this.trangThai = 'san sang thu hoach';
+            this.trangThai = 'san sang thu hoach'
+            return this.trangThai;
         }
-        return this.trangThai = 'dang trong';
+
+        this.trangThai = 'dang trong';
+        return this.trangThai;
     }
 
     thuHoach() {
@@ -88,5 +91,3 @@ console.log(lua.kiemTraTrangThai()); // "sẵn sàng thu hoạch"
 console.log(lua.thuHoach()); // 10
 console.log(lua.kiemTraTrangThai());
 
-// lua.trong();
-console.log(lua.thuHoach());
