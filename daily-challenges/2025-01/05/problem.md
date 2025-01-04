@@ -7,7 +7,7 @@ Một gia đình chuẩn bị gói bánh chưng để đón Tết. Công thức 
 - **200g gạo nếp**.
 - **50g đỗ xanh**.
 - **100g thịt lợn**.
-- **5g hành lá**.
+- **5g hành củ**.
 
 Hãy viết một hàm TypeScript để tính toán số lượng nguyên liệu cần thiết để gói một số lượng bánh chưng nhất định.
 
@@ -20,7 +20,7 @@ Hãy viết một hàm TypeScript để tính toán số lượng nguyên liệu
     - `gaoNep`: số gram gạo nếp.
     - `doXanh`: số gram đỗ xanh.
     - `thitLon`: số gram thịt lợn.
-    - `hanhLa`: số gram hành lá.
+    - `hanhCu`: số gram hành củ.
 
 ---
 
@@ -39,7 +39,7 @@ console.log(ingredients);
   gaoNep: 2000,    // 10 * 200g
   doXanh: 500,     // 10 * 50g
   thitLon: 1000,   // 10 * 100g
-  hanhLa: 50       // 10 * 5g
+  hanhCu: 50       // 10 * 5g
 }
 ```
 
@@ -57,7 +57,7 @@ const numBanh = 5;
   gaoNep: 1000,
   doXanh: 250,
   thitLon: 500,
-  hanhLa: 25
+  hanhCu: 25
 }
 ```
 
@@ -80,6 +80,6 @@ const numBanh = 50;
   gaoNep: 10000,
   doXanh: 2500,
   thitLon: 5000,
-  hanhLa: 250
+  hanhCu: 250
 }
 ```
