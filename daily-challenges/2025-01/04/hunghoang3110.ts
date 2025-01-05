@@ -9,48 +9,26 @@ type Ranked = {
     score: number;
 };
 
-function calculatePokerScore(players: Player[]): { name: string, score: number }[] {
-    let arrayRanked: Ranked[] = [];
-    let totalScore: number;
-    players.forEach(player => {
-        switch (player.rank) {
-            case 'Royal Flush':
-                totalScore = 1000 + player.chips * 10;
-                break;
-            case 'Straight Flush':
-                totalScore = 750 + player.chips * 10;
-                break;
-            case 'Four of a Kind':
-                totalScore = 500 + player.chips * 10;
-                break;
-            case 'Full House':
-                totalScore = 400 + player.chips * 10;
-                break;
-            case 'Flush':
-                totalScore = 300 + player.chips * 10;
-                break;
-            case 'Straight':
-                totalScore = 200 + player.chips * 10;
-                break;
-            case 'Three of a Kind':
-                totalScore = 150 + player.chips * 10;
-                break;
-            case 'Two Pair':
-                totalScore = 100 + player.chips * 10;
-                break;
-            case 'One Pair':
-                totalScore = 50 + player.chips * 10;
-                break;
-            case 'High Card':
-                totalScore = 10 + player.chips * 10;
-                break;
-            default:
-                break;
-        };
-        arrayRanked.push({
+const rankScores = new Map<string, number>([
+    ['Royal Flush', 1000],
+    ['Straight Flush', 750],
+    ['Four of a Kind', 500],
+    ['Full House', 400],
+    ['Flush', 300],
+    ['Straight', 200],
+    ['Three of a Kind', 150],
+    ['Two Pair', 100],
+    ['One Pair', 50],
+    ['High Card', 10]]
+);
+
+function calculatePokerScore(players: Player[]): Ranked[] { 
+    return players.map(player => { 
+        const baseScore = rankScores.get(player.rank) || 0; 
+        const totalScore = baseScore + player.chips * 10; 
+        return { 
             name: player.name,
-            score: totalScore
-        })
-    });
-    return arrayRanked.sort((a, b) => b.score - a.score);
+            score: totalScore 
+        };
+    }).sort((a, b) => b.score - a.score);
 }
