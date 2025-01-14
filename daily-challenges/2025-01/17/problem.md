@@ -13,7 +13,15 @@ Hãy viết một hàm TypeScript để tính toán kế hoạch đầu tư nh�
 ### Cách tính lãi kép:
 - Lãi suất hàng năm sẽ áp dụng cho tổng số tiền đầu tư bao gồm cả số tiền đầu tư ban đầu và số tiền đầu tư mỗi năm.
 - Công thức tính lãi kép hàng năm:
-  \[ A = P \times (1 + r)^n + \left( I \times \sum_{i=1}^{n} (1 + r)^{n-i} \right) \]
+  \[ FV = P * (1 + r)^n*t + PMT * (((1 + r/n)^n*t)-1) / (r/n) \]
+  
+Trong đó:
+ - FV: Số tiền mục tiêu (target)
+ - P: Số tiền ban đầu (initial)
+ - PMT: Số tiền đầu tư định kỳ (investmentPerPeriod)
+ - r: Lãi suất hàng năm (interestRate)
+ - n: Số chu kỳ trong một năm (12 nếu theo tháng, 365 nếu theo ngày)
+ - t: Thời gian (năm)
   
 ### Yêu cầu:
 1. **Tính toán số năm cần thiết để đạt được mục tiêu tài chính `target` (Số năm cần thiết để số tiền trong tài khoản đạt `target`).**
