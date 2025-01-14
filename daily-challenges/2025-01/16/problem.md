@@ -20,14 +20,14 @@ Hãy tính toán:
   - `target` (number): Số tiền mục tiêu cần đạt được.
   - `initial` (number): Số tiền ban đầu.
   - `investmentPerPeriod` (number): Số tiền đầu tư định kỳ mỗi tháng (hoặc mỗi ngày).
+  - `fixedTime` (number | undefined): Nếu có, là thời gian cố định (số tháng hoặc số ngày) mà bạn muốn đạt được mục tiêu.
   - `period` ("month" | "day"): Chu kỳ đầu tư (theo tháng hoặc theo ngày).
+  - `interestRate` (number): Tỷ lệ lãi suất hàng năm (ví dụ: 0.05 = 5%/năm).
 
 - **Đầu ra:**
-Hàm trả về một đối tượng chứa:
-  1. **`timeToReachTarget`:** Số tháng hoặc số ngày cần thiết để đạt được số tiền mục tiêu.
-  2. **`accumulationOverTime`:** Danh sách số tiền tích lũy sau mỗi chu kỳ, gồm:
-      - `time`: Thời gian (tháng hoặc ngày).
-      - `total`: Tổng số tiền tích lũy tại thời điểm đó.
+Hàm trả về :
+  - **`timeToReachTarget`:** Số tháng hoặc số ngày để đạt được mục tiêu (nếu không có `fixedTime`).
+  hoặc -  **`requiredInterestRate`:** Tỷ lệ lãi suất cần thiết (nếu có `fixedTime`).
 
 
 ## Mẫu TypeScript
