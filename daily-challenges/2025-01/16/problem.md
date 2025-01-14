@@ -21,10 +21,9 @@ Hãy tính toán:
   - `initial` (number): Số tiền ban đầu.
   - `investmentPerPeriod` (number): Số tiền đầu tư định kỳ mỗi tháng (hoặc mỗi ngày).
   - `fixedTime` (number | undefined): Nếu có, là thời gian cố định (số tháng hoặc số ngày) mà bạn muốn đạt được mục tiêu.
-  - `fixedTime` (number | undefined): Nếu có, là thời gian cố định (số tháng hoặc số ngày) mà bạn muốn đạt được mục tiêu.
   - `period` ("month" | "day"): Chu kỳ đầu tư (theo tháng hoặc theo ngày).
   - `interestRate` (number): Tỷ lệ lãi suất hàng năm (ví dụ: 0.05 = 5%/năm).
-  - `interestRate` (number): Tỷ lệ lãi suất hàng năm (ví dụ: 0.05 = 5%/năm).
+
 
 - **Đầu ra:** Hàm trả về :
   - **`timeToReachTarget`:** Số tháng hoặc số ngày để đạt được mục tiêu (nếu không có `fixedTime`).
