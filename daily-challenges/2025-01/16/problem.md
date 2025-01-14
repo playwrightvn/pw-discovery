@@ -26,8 +26,7 @@ Hãy tính toán:
   - `interestRate` (number): Tỷ lệ lãi suất hàng năm (ví dụ: 0.05 = 5%/năm).
   - `interestRate` (number): Tỷ lệ lãi suất hàng năm (ví dụ: 0.05 = 5%/năm).
 
-- **Đầu ra:**
-Hàm trả về :
+- **Đầu ra:** Hàm trả về :
   - **`timeToReachTarget`:** Số tháng hoặc số ngày để đạt được mục tiêu (nếu không có `fixedTime`).
   - **`requiredInterestRate`:** Tỷ lệ lãi suất cần thiết (nếu có `fixedTime`).
 
