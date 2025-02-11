@@ -1,7 +1,7 @@
 import {expect, test} from '@playwright/test';
 import path from "path";
 
-const authFile = path.join(__dirname, '../playwright/.auth/user.json');
+const authFile = path.join(__dirname, '../../../playwright/.auth/user.json');
 
 test.describe('authenticate', () => {
     test('Login', async ({page}) => {
@@ -18,8 +18,6 @@ test.describe('authenticate', () => {
             .fill(testUser.password);
         await page.getByRole('button', {name: 'Đăng nhập'})
             .click();
-
-        // Wait until the page reaches a state where all cookies are set.
         await expect(page).toHaveTitle('Đặt Vé Concert');
 
         // End of authentication steps.
@@ -29,7 +27,7 @@ test.describe('authenticate', () => {
 
 test.describe('Book ticket', () => {
     test.use({
-        storageState: 'playwright/.auth/user.json', // Path to the saved authentication state
+        storageState: authFile, // Path to the saved authentication state
     });
     test('Book ticket', async ({page}) => {
         // Set up dialog handler first
