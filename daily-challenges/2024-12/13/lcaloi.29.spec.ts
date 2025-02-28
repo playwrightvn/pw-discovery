@@ -1,79 +1,84 @@
-export type TrangThaiTrong = 'dang trong' | 'san sang thu hoach' | 'da thu hoach' | '';
+type TrangThai = 'đang trồng' | 'sẵn sàng thu hoạch' | 'đã thu hoạch' | '';
 
 class CayTrong {
-    readonly name: string;
-    readonly thoiGianTrong: number;
-    readonly sanLuong: number;
-    private trangThai: TrangThaiTrong;
-    private thoiGianBatDau: Date | null;
-    private thoiGianThuHoach: Date | null;
+    name: string;
+    thoiGianTrong: number;
+    sanLuong: number;
+    trangThai: TrangThai;
+    thoiGianBatDau: Date | null;
+    thoiGianThuHoach: Date;
 
     constructor(name: string, thoiGianTrong: number, sanLuong: number) {
         this.name = name;
         this.thoiGianTrong = thoiGianTrong;
         this.sanLuong = sanLuong;
-        this.thoiGianBatDau = null;
         this.trangThai = '';
-        this.thoiGianThuHoach = null;
-    };
+        this.thoiGianBatDau = null;
+    }
 
     trong() {
         if (!this.trangThai || !this.thoiGianBatDau) {
-            const now = new Date();
-            this.trangThai = 'dang trong';
-            this.thoiGianBatDau = now;
-            this.thoiGianThuHoach = new Date(now);
-            this.thoiGianThuHoach.setHours(now.getHours() + this.thoiGianTrong);
-            console.log(`Bat dau trong cay: ${convertTimeToString(this.thoiGianBatDau)}. Ban co the thu hoach sau ${this.thoiGianTrong}h nua`);
-        } else {
-            console.log(`Cay da duoc trong vao luc ${convertTimeToString(this.thoiGianBatDau)}`);
+            this.thoiGianBatDau = new Date();
+            this.trangThai = 'đang trồng';
+            this.thoiGianThuHoach = new Date(this.thoiGianBatDau.getTime() + this.thoiGianTrong * 3_600_000);
+            console.log(`Đã bắt đầu trồng cây. Bạn có thể thu hoạch vào lúc ${convertTime(this.thoiGianThuHoach)}`);
+            return;
         }
+        console.log(`Cây đã được trồng vào lúc ${convertTime(this.thoiGianBatDau)}`);
     }
 
-    kiemTraTrangThai(): string {
-        if (!this.thoiGianBatDau || !this.thoiGianThuHoach) {
-            return 'Cây chưa được trồng'
+    kiemTraTrangThai() {
+        if (!this.trangThai || !this.thoiGianBatDau) {
+            return 'Cây chưa được trồng';
         }
 
-        if (this.trangThai === 'da thu hoach') {
-            return this.trangThai;
-        }
+        const now = new Date();
+
+        this.thoiGianBatDau = this.thoiGianBatDau.getTime() > now.getTime() ? this.thoiGianBatDau : now;
 
         if (this.thoiGianBatDau.getTime() >= this.thoiGianThuHoach.getTime()) {
-            this.trangThai = 'san sang thu hoach'
+            this.trangThai = 'sẵn sàng thu hoạch';
+            return this.trangThai;
+        }
+        if (this.trangThai === 'đã thu hoạch') {
             return this.trangThai;
         }
 
-        this.trangThai = 'dang trong';
+        this.trangThai = 'đang trồng';
         return this.trangThai;
     }
 
     thuHoach() {
-        if (this.trangThai === 'san sang thu hoach') {
-            this.trangThai = 'da thu hoach';
+        if (this.trangThai === 'sẵn sàng thu hoạch') {
+            this.trangThai = 'đã thu hoạch';
             return this.sanLuong;
         }
-        if (this.trangThai === 'da thu hoach') {
-            return 'Cay da duoc thu hoach roi';
+
+        if (this.trangThai === 'đã thu hoạch') {
+            return 'Cây đã được thu hoạch rồi';
         }
-        return `Chua the thu hoach. Cay dang trong thai thai: ${this.trangThai}`;
+        return `Cây đang ở trạng thái ${this.trangThai} nên chưa thể thu hoạch được`;
     }
 
     setSkipTime(hours: number) {
-        if (!this.thoiGianBatDau) {
-            throw new Error('Không lấy được time bắt đầu trồng cây');
-        }
-        this.thoiGianBatDau?.setHours(this.thoiGianBatDau.getHours() + hours);
+        this.thoiGianBatDau?.setTime(this.thoiGianBatDau.getTime() + hours * 3_600_000);
     }
-
 }
 
-function convertTimeToString(date: Date) {
-    return date.toLocaleString('vi-vn', {
-        'hourCycle': 'h24'
-    });
+function convertTime(date: Date) {
+    return date.toLocaleTimeString('vi-VN', { hourCycle: 'h24' });
 }
 
+
+
+const lua = new CayTrong("Lúa", 2, 10); // 2 giờ, 10kg
+lua.trong();
+console.log(lua.kiemTraTrangThai()); // "đang trồng"
+
+// Sau 2 giờ
+lua.setSkipTime(2);
+console.log(lua.kiemTraTrangThai()); // "sẵn sàng thu hoạch"
+console.log(lua.thuHoach()); // 10
 
 const nongTrai = [
     new CayTrong("Lúa", 2, 10),
@@ -81,13 +86,13 @@ const nongTrai = [
     new CayTrong("Khoai tây", 3, 20)
 ];
 
-const lua = new CayTrong("Lúa", 2, 10); // 2 giờ, 10kg
-lua.trong();
-console.log(lua.kiemTraTrangThai());// "đang trồng"
+for (const cayTrong of nongTrai) {
+    console.log(`Cây ${cayTrong.name}`);
+    cayTrong.trong();
+    console.log(cayTrong.kiemTraTrangThai());
 
-// Sau 2 giờ
-lua.setSkipTime(2);
-console.log(lua.kiemTraTrangThai()); // "sẵn sàng thu hoạch"
-console.log(lua.thuHoach()); // 10
-console.log(lua.kiemTraTrangThai());
+    cayTrong.setSkipTime(cayTrong.thoiGianTrong);
 
+    console.log(cayTrong.kiemTraTrangThai());
+    console.log(cayTrong.thuHoach());
+}
