@@ -20,11 +20,27 @@ npm install
 
 Xem thêm hướng dẫn bằng video ở đây: [Link Youtube](https://www.youtube.com/watch?v=MPDCekrpeHM&list=PLM5yUS9s0VYBRlbFSo_urVNn6jQmqcsW0&ab_channel=PlaywrightVi%E1%BB%87tNam)
 
+# Một số tài nguyên để học tập
+## Tài nguyên miễn phí
+1. [Series Vọc vạch Playwright](https://www.youtube.com/@playwrightvietnam)
+2. [Tiktok Playwright Việt Nam](https://www.tiktok.com/@playwrightvietnam)
+3. [Cộng đồng Playwright Việt Nam trên Facebook](https://www.facebook.com/groups/playwright.automation.test)
+
+## Các khoá học chất lượng, có hệ thống và được đồng hành bởi các mentors dày dặn kinh nghiệm
+### Học trực tiếp qua Zoom
+1. [Khoá full-stack - dành cho người chưa biết code](https://playwrightvn.com/fullstack-automation-qa-cho-nguoi-chua-biet-gi-voi-playwright-typescript/)
+2. [Khoá master class - dành cho người đã biết code](https://playwrightvn.com/playwright-master-class-from-zero-to-hero/)
+3. [Khoá học API full-stack - hiểu bản chất (manual + automation)](https://academy.betterbytesvn.com/khoa-hoc/api-cho-nguoi-chua-biet-gi/)
+
+### Học qua video
+1. [Khoá full-stack - dành cho người chưa biết code](https://playwrightvn.com/fullstack-automation-qa-cho-nguoi-chua-biet-gi-voi-playwright-typescript/)
+
+
 # 🧑‍💻 Đóng Góp
 - Chúng tôi luôn chào đón các đóng góp từ cộng đồng! Hãy tạo một fork của dự án, thực hiện thay đổi và gửi pull request cho chúng tôi.
 - Đóng góp của bạn có thể là đề bài, là review code cho người khác.
+
 # 📬 Liên Hệ
 Nếu bạn có bất kỳ câu hỏi hoặc góp ý nào, hãy liên hệ với chúng tôi qua các kênh:
 - Email: playwrightvietnam@gmail.com
 - Cộng đồng Playwright Việt Nam trên Facebook: https://www.facebook.com/playwrightvietnam/
-

@@ -20,7 +20,7 @@ test('example filter', async ({ page }) => {
     <tr>
       <td>2</td>
       <td>Mỹ Tâm</td>
-      <td>Ước Gì</td>
+      <td>Ước Gì</td>r
     </tr>
     <tr>
       <td>3</td>
