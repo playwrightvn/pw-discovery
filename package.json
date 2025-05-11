@@ -12,6 +12,8 @@
     "@types/node": "^20.12.12"
   },
   "dependencies": {
+    "@axe-core/playwright": "^4.10.1",
+    "axe-html-reporter": "^2.2.11",
     "csv-parse": "^5.5.6",
     "dotenv": "^16.4.5",
     "save-dev": "^0.0.1-security"
