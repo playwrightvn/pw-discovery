@@ -8,7 +8,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.49.0",
+    "@playwright/test": "^1.54.2",
     "@types/node": "^20.12.12"
   },
   "dependencies": {
