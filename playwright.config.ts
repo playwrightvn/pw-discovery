@@ -38,7 +38,24 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
     {
-      name: 'BrowserStack',
-    }
+      name: 'chromium',
+      use: {
+        browserName: 'chromium',
+        // Thông tin kết nối BrowserStack
+        connectOptions: {
+          wsEndpoint: `wss://cdp.browserstack.com/playwright?caps=${encodeURIComponent(
+            JSON.stringify({
+              os: 'Windows',
+              os_version: '10',
+              browser: 'chrome',
+              browser_version: 'latest',
+              'browserstack.username': 'ngaqunh_ROBxYt',
+              'browserstack.accessKey': 'iy4oCvvaYzPwF18xDwyN',
+              'client.playwrightVersion': require('@playwright/test').version,
+            })
+          )}`,
+        },
+      },
+    },
   ]
 });
