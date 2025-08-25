@@ -1,0 +1,31 @@
+2025-08-25 23:40:58 - [32minfo[39m: Creating configuration file...
+2025-08-25 23:40:58 - [34mdebug[39m: requireModuleV3 :: module - @playwright/test/package.json, package - @playwright/test
+2025-08-25 23:40:58 - [34mdebug[39m: Resolved from resolveModuleV3 :: Path - /Users/ngaquynh/Workspace/Better-bytes/better-bytes-academy/pw-discovery/node_modules/@playwright/test/package.json
+2025-08-25 23:40:58 - [34mdebug[39m: requireModuleV3 :: module - selenium-webdriver/package.json, package - selenium-webdriver
+2025-08-25 23:40:58 - [34mdebug[39m: Unable to resolve module with requireModuleV3 with error: Error: Cannot find module 'selenium-webdriver'
+Require stack:
+- /Users/ngaquynh/Workspace/Better-bytes/better-bytes-academy/pw-discovery/node_modules/browserstack-node-sdk/src/helpers/helper.js
+- /Users/ngaquynh/Workspace/Better-bytes/better-bytes-academy/pw-discovery/node_modules/browserstack-node-sdk/src/bin/setup.js
+2025-08-25 23:40:58 - [34mdebug[39m: requireModuleV2 :: module - selenium-webdriver/package.json, package - selenium-webdriver
+2025-08-25 23:40:58 - [34mdebug[39m: Getting selenium-webdriver/package.json from /Users/ngaquynh/Workspace/Better-bytes/better-bytes-academy/pw-discovery
+2025-08-25 23:40:58 - [34mdebug[39m: selenium-webdriver/package.json doesn't exist at /Users/ngaquynh/Workspace/Better-bytes/better-bytes-academy/pw-discovery
+2025-08-25 23:40:58 - [34mdebug[39m: Getting selenium-webdriver/package.json from path /Users/ngaquynh/Workspace/Better-bytes/better-bytes-academy/pw-discovery
+2025-08-25 23:40:58 - [34mdebug[39m: Getting selenium-webdriver/package.json from null
+2025-08-25 23:40:58 - [34mdebug[39m: Error while loading package. Error: selenium-webdriver/package.json doesn't exist.
+2025-08-25 23:40:58 - [34mdebug[39m: requireModuleV3 :: module - selenium-webdriver/package.json, package - selenium-webdriver
+2025-08-25 23:40:58 - [34mdebug[39m: Unable to resolve module with requireModuleV3 with error: Error: Cannot find module 'selenium-webdriver'
+Require stack:
+- /Users/ngaquynh/Workspace/Better-bytes/better-bytes-academy/pw-discovery/node_modules/browserstack-node-sdk/src/helpers/helper.js
+- /Users/ngaquynh/Workspace/Better-bytes/better-bytes-academy/pw-discovery/node_modules/browserstack-node-sdk/src/bin/setup.js
+2025-08-25 23:40:58 - [34mdebug[39m: requireModuleV2 :: module - selenium-webdriver/package.json, package - selenium-webdriver
+2025-08-25 23:40:58 - [34mdebug[39m: Getting selenium-webdriver/package.json from /Users/ngaquynh/Workspace/Better-bytes/better-bytes-academy/pw-discovery
+2025-08-25 23:40:58 - [34mdebug[39m: selenium-webdriver/package.json doesn't exist at /Users/ngaquynh/Workspace/Better-bytes/better-bytes-academy/pw-discovery
+2025-08-25 23:40:58 - [34mdebug[39m: Getting selenium-webdriver/package.json from path /Users/ngaquynh/Workspace/Better-bytes/better-bytes-academy/pw-discovery
+2025-08-25 23:40:58 - [34mdebug[39m: Getting selenium-webdriver/package.json from null
+2025-08-25 23:40:58 - [34mdebug[39m: Error while loading package. Error: selenium-webdriver/package.json doesn't exist.
+2025-08-25 23:40:58 - [34mdebug[39m: Firing SDK event for funnel data: {"userName":"[REDACTED]","accessKey":"[REDACTED]","event_type":"SDKSetup","detectedFramework":"","optimalHubUrl":[],"event_properties":{"testhub_uuid":"","product_map":{"observability":true,"accessibility":false,"percy":false,"automate":true,"app_automate":false,"central_scanner":false,"lcnc":false},"productMap":{"observability":true,"accessibility":false,"percy":false,"automate":true,"app_automate":false,"central_scanner":false,"lcnc":false},"language_framework":"node-setup","referrer":"nodeagent/1.41.1","frameworkVersion":null,"automationFramework":"selenium","automationFrameworkVersion":null,"language":"nodejs","languageVersion":"v22.9.0","product":["automate","observability"],"buildName":"browserstack build","buildIdentifier":"#${BUILD_NUMBER}","os":"Darwin","hostname":"Spaces-MacBook.lan","seleniumVersion":null}}
+2025-08-25 23:40:58 - [32minfo[39m: Adding new script(s) in package.json...
+2025-08-25 23:40:58 - [32minfo[39m: Setup completed
+2025-08-25 23:40:58 - [34mdebug[39m: Sending request to https://api.browserstack.com/sdk/v1/event
+2025-08-25 23:40:58 - [34mdebug[39m: Response from https://api.browserstack.com/sdk/v1/event: 200 OK
+2025-08-25 23:40:58 - [34mdebug[39m: API Event SDKSetup response - {"data":{"message":"SDK Event recorded successfully"},"body":"{\"message\":\"SDK Event recorded successfully\"}","statusCode":200}
