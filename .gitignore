@@ -6,3 +6,4 @@ node_modules/
 .env
 playwright/.auth
 zerostep.config.json
+log/

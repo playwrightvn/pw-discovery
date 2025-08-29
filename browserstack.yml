@@ -1,0 +1,21 @@
+userName: ${BROWSERSTACK_USERNAME}
+accessKey: ${BROWSERSTACK_ACCESS_KEY}
+framework: playwright  # Giữ nguyên
+platforms:  # Danh sách browser/OS bạn muốn test (có thể thêm nhiều)
+  - os: OS X
+    osVersion: Ventura
+    browserName: playwright-webkit
+    browserVersion: latest
+  - os: iOS
+    osVersion: 17.0
+    browserName: safari
+    deviceName: iPhone 14 Pro Max  # Tên thiết bị
+    realMobile: true  # Sử dụng thiết bị thật
+buildName: my-playwright-build  # Tên build để xem trên dashboard
+projectName: BBA - PW Discovery  # Tên project
+testObservability: true  # Bật để xem logs chi tiết
+debug: true  # Bật debug mode
+consoleLogs: info  # Mức độ console logs
+networkLogs: true  # Bật network logs
+browserstackLocal: false  # Bật true nếu test local/internal site
+parallelsPerPlatform: 1  # Số lượng test parallel trên mỗi platform (tăng để chạy nhanh hơn, tùy theo plan)
