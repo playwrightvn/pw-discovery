@@ -3,14 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx browserstack-node-sdk playwright test",
+    "test:local": "npx playwright test"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@axe-core/playwright": "^4.10.2",
     "@playwright/test": "^1.52.0",
-    "@types/node": "^20.12.12"
+    "@types/node": "^20.12.12",
+    "browserstack-node-sdk": "^1.42.0"
   },
   "dependencies": {
     "axe-html-reporter": "^2.2.11",
