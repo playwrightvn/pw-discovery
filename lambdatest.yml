@@ -1,0 +1,75 @@
+# Access your LambdaTest credentials from https://accounts.lambdatest.com/security/username-accesskey
+# It's recommended to use environment variables for your credentials.
+user: ${LAMBDATEST_USERNAME}
+accessKey: ${LAMBDATEST_ACCESS}
+
+# Build name for your test run
+build: "Playwright Node.js SDK Build"
+
+# Name of the test suite
+name: "Playwright Discovery"
+
+# Global base configuration
+framework: "playwright" # Framework name
+source: "node-js-playwright-sample-sdk:v1" # GitHub branch and tag
+
+# Optional: Build and project tags for organization and filtering
+buildTags: ["playwright", "nodejs", "typescript"]
+tags: ["smoke", "regression"]
+projectName: "Playwright Node SDK Testing"
+
+# Define the number of parallel sessions for each configuration
+# Check your parallel session limits at https://billing.lambdatest.com/billing/subscriptions
+parallelsPerPlatform: 2
+
+# Optional: Advanced settings applied to all tests
+network: false # To capture network HAR logs (may impact test execution speed)
+console: false # To capture browser console logs (may impact test execution speed)
+video: true # To capture video for debugging (may impact test execution speed)
+tunnel: false # To test pages behind a VPN/private network or from a local system. Refer to https://www.lambdatest.com/support/docs/testing-locally-hosted-pages/
+dedicatedProxy: false
+idleTimeout: 300
+timezone: "Asia/Ho_Chi_Minh"
+visual: true # To capture a screenshot for each command (may impact test execution speed)
+headless: false # To run tests in headless mode. Note: Video will not be available for headless tests.
+commandLog: true # To capture commands that are executed on the LambdaTest platform
+resolution: "1280x960" # To set the global resolution/viewport size to execute tests
+
+# Tunnel-specific tests
+tunnel_settings:
+  # tunnel: true
+  # autostart: true
+  # tunnelName: "app-behind-firewall-localhost-test-tunnel"
+  # localdirectory: "./log"
+  # verbose: true
+  # loglevel: "debug"
+
+# Global Playwright configuration (inherited by all platforms unless overridden)
+playwrightConfigOptions:
+  testDir: "voc-vach"
+  # use:
+  #   viewport: { width: 1280, height: 720 }
+
+# Refer to the capability generator for detailed configurations: https://www.lambdatest.com/capabilities-generator/
+platforms:
+  - platform: "macOS Sequoia" # Or "Windows 11", "android", "ios"
+    browserName: "pw-chromium" # Or pw-firefox, pw-webkit
+    # You can specify an exact browser version or use "latest", "latest-1", etc.
+    browserVersion: "latest"
+    # For mobile testing
+    # deviceName: "Pixel 7" # Or "iPhone 14"
+    # platformVersion: "13" # Or "16"
+    # isRealMobile: true
+    # ltOptions:
+    #   Geolocation-specific tests
+    #   geoLocation: "GB"
+    #   Network communication tests (enable network logging)
+    #   network: true
+    #   console: true
+    #   fullHar: true # To capture request and response body (might slow the test execution)
+    # playwrightConfigOptions:
+    #   testDir: "additional-tests"
+    #   testMatch: ["**/mobile-responsive.spec.ts"]
+    #   # For mobile testing
+    #   use:
+    #     viewport: { width: 390, height: 844 }
