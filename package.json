@@ -11,12 +11,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.53.0",
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.52.0",
     "@types/node": "^20.12.12",
     "browserstack-node-sdk": "^1.42.0"
   },
   "dependencies": {
-    "@axe-core/playwright": "^4.10.1",
     "axe-html-reporter": "^2.2.11",
     "csv-parse": "^5.5.6",
     "dotenv": "^16.4.5",

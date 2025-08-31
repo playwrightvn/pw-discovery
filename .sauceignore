@@ -1,0 +1,23 @@
+# Loại bỏ thư mục node_modules (rất lớn, không cần bundle vì npm packages được chỉ định trong config.yml)
+node_modules/
+
+# Loại bỏ thư mục build/output
+dist/
+build/
+playwright-report/
+test-results/
+
+# Loại bỏ file tạm và log
+*.log
+*.tmp
+*.cache
+
+# Loại bỏ file cấu hình nhạy cảm
+.env
+*.local
+
+# Loại bỏ file không liên quan đến test
+*.md
+*.json
+package-lock.json
+yarn.lock
