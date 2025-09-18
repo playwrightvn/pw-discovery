@@ -20,6 +20,7 @@
     "axe-html-reporter": "^2.2.11",
     "csv-parse": "^5.5.6",
     "dotenv": "^16.4.5",
-    "save-dev": "^0.0.1-security"
+    "save-dev": "^0.0.1-security",
+    "sharp": "^0.34.4"
   }
 }
