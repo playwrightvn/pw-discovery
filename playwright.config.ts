@@ -41,11 +41,11 @@ export default defineConfig({
       },
 
     },
-    {
-      name: 'iPhone 14 Pro Max',
-      use: {
-        trace: 'off', // Đảm bảo tắt tracing cho iOS vì lỗi
-      },
-    },
+    // {
+    //   name: 'iPhone 14 Pro Max',
+    //   use: {
+    //     trace: 'off', // Đảm bảo tắt tracing cho iOS vì lỗi
+    //   },
+    // },
   ]
 });
